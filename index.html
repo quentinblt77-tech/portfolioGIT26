@@ -1,2 +1,421 @@
-Mon premier fichier html pour git
-Voici ma 2e ligne
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Quentin THEPOT</title>
+
+
+
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- FontAwesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Barre de Navigation Supérieure ("Menu") -->
+    <nav class="barre-navigation-fixe">
+        <div class="conteneur-navigation">
+            <a href="#section-presentation-profil" class="lien-nav">Présentation</a>
+            <a href="#section-bts-sio-explications" class="lien-nav">BTS SIO</a>
+            <a href="#section-parcours-scolaire" class="lien-nav">Parcours</a>
+            <a href="#section-objectifs-professionnels" class="lien-nav">Objectifs</a>
+            <a href="#section-experiences-professionnelles" class="lien-nav">Expériences</a>
+            <a href="#section-competences-techniques" class="lien-nav">Compétences</a>
+            <a href="#section-projet-koo-2-fourchette" class="lien-nav">Projets</a>
+            <a href="#section-procedures-techniques" class="lien-nav">Documents</a>
+            <a href="#pied-de-page-contact" class="lien-nav">Contact</a>
+        </div>
+    </nav>
+
+    <!-- bannière principale avec le nom + le logo -->
+    <header class="banniere-principale-entete">
+        <div class="conteneur-principal">
+            <div class="grille-banniere-contenu">
+                <!-- Bloc de gauche : Texte et boutons -->
+                <div class="bloc-texte-infos">
+                    <h1>Quentin THEPOT</h1>
+                    <p class="sous-titre-banniere">Étudiant en BTS SIO - Campus Saint-Aspais - Melun</p>
+                    <div class="boutons-actions-banniere">
+                        <a href="#section-experiences-professionnelles" class="bouton-primaire">Découvrir mon
+                            parcours</a>
+                        <a href="#pied-de-page-contact" class="bouton-secondaire">Contactez-moi</a>
+                    </div>
+                </div>
+
+                <!-- Bloc de droite : Logo Saint Aspais -->
+                <div class="bloc-logo-droite">
+                    <img src="assets/img/Saint aspais.jpg" alt="Saint Aspais">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section présentation (Qui suis-je ?) -->
+    <section id="section-presentation-profil" class="section-generale">
+        <div class="conteneur-principal">
+            <!-- Grille avec photo et infos -->
+            <div class="grille-deux-colonnes-presentation">
+                <div class="bloc-photo-profil">
+                    <img src="assets/img/Capture d'écran 2025-10-14 100114.png" alt="Quentin THEPOT"
+                        class="image-profil-ronde">
+                </div>
+
+                <div class="bloc-texte-presentation">
+                    <h2 class="titre-de-section">Présentation</h2>
+                    <ul class="liste-infos-perso">
+                        <li><strong>Quentin THEPOT, 19 ans</strong></li>
+                        <li>Formation : BTS SIO (Première année)</li>
+                        <li>Passion : Informatique, Réseau et Cybersécurité</li>
+                        <li>Langue : Anglais (A2)</li>
+                        <li>Permis B</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Texte de bio centré -->
+            <div class="texte-biographie-centre">
+                <p>
+                    Je suis étudiant en première année de BTS SIO, futur étudiant SISR.
+                    Passionné par l'informatique, le réseau et la cybersécurité, j'ai choisi cette filière
+                    pour approfondir mes connaissances techniques et me préparer activement à un métier
+                    dans la protection et l'administration des systèmes informatiques.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section explications BTS SIO -->
+    <section id="section-bts-sio-explications" class="section-generale fond-plus-fonce">
+        <div class="conteneur-principal alignement-centre">
+            <h2 class="titre-de-section">Qu'est-ce que le BTS SIO ?</h2>
+            <p class="paragraphe-intro-section">
+                Mon BTS consiste à former des techniciens capables de gérer des projets informatiques en entreprise,
+                via le développement ou l'administration de systèmes.
+            </p>
+
+            <div class="blocs-options-bts">
+                <div class="carte-option-bts">
+                    <h3>SLAM</h3>
+                    <p>Solutions Logicielles et Applications Métiers</p>
+                    <hr class="separateur-bts">
+                    <p>Développement d'applications et logiciels métier.</p>
+                </div>
+
+                <div class="carte-option-bts">
+                    <h3>SISR</h3>
+                    <p>Solutions d'Infrastructure, Systèmes et Réseaux</p>
+                    <hr class="separateur-bts">
+                    <p>Administration et sécurisation des réseaux et systèmes.</p>
+                </div>
+            </div>
+
+            <div class="conteneur-lien-document">
+                <a href="assets/files/REFERENTIEL_BTS_SIO-_RENOVATION_SESSION_2022-SIGNETS.pdf" target="_blank"
+                    class="bouton-contour">
+                    Voir le référentiel officiel BTS SIO
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Section Parcours Scolaire (Chronologie) -->
+    <section id="section-parcours-scolaire" class="section-generale">
+        <div class="conteneur-principal">
+            <h2 class="titre-de-section alignement-centre">Mon Parcours Scolaire</h2>
+            <p class="paragraphe-intro-section alignement-centre">
+                Mon parcours éducatif, orienté vers la technologie et les systèmes numériques, m'a permis d'acquérir des
+                bases solides essentielles en cybersécurité, réseaux, et développement. Ces fondations sont actuellement
+                renforcées et approfondies dans le cadre de mon BTS SIO.
+            </p>
+
+            <div class="frise-chronologique-education">
+
+                <div class="element-frise-chrono">
+                    <div class="numero-etape-cercle">1</div>
+                    <div class="contenu-etape-chrono">
+                        <h3>Collège</h3>
+                        <p><strong>Obtention du Diplôme National du Brevet - Mention Bien</strong><br>
+                            <span class="texte-secondaire-petit">Collège Jacques Amyot</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="element-frise-chrono">
+                    <div class="numero-etape-cercle">2</div>
+                    <div class="contenu-etape-chrono">
+                        <h3>Lycée - Bac Pro SN</h3>
+                        <p><strong>Obtention du Baccalauréat Professionnel Systèmes Numériques, option RISC - Mention
+                                très bien</strong><br>
+                            <span class="texte-secondaire-petit">Lycée Saint-Aspais</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="element-frise-chrono">
+                    <div class="numero-etape-cercle">3</div>
+                    <div class="contenu-etape-chrono">
+                        <h3>BTS SIO (SISR)</h3>
+                        <p><strong>BTS Services Informatiques aux Organisations – En cours</strong><br>
+                            <span class="texte-secondaire-petit">Campus Saint-Aspais</span>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="conteneur-lien-document alignement-centre">
+                <a href="https://institutionsaintaspais.fr/campus/" target="_blank" class="bouton-contour">
+                    Plus d'informations concernant la formation
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Section Objectifs Professionnels -->
+    <section id="section-objectifs-professionnels" class="section-generale">
+        <div class="conteneur-principal">
+            <h2 class="titre-de-section alignement-centre">Objectifs Professionnels et Vision d'Avenir</h2>
+            <p class="paragraphe-intro-section alignement-centre">
+                Mon objectif est clair : me spécialiser dans la cybersécurité après l'obtention du BTS SIO.
+                Je souhaite poursuivre mes études avec une Licence dans ce domaine passionnant afin de contribuer
+                activement à la protection des infrastructures critiques.
+            </p>
+
+            <div class="grille-trois-cartes-centree">
+                <div class="carte-info-standard">
+                    <h3>Obtention du BTS SIO</h3>
+                    <p>Valider les acquis de l'option SISR et réussir l'épreuve orale de présentation du portfolio.</p>
+                </div>
+                <div class="carte-info-standard">
+                    <h3>Poursuite en Licence Pro</h3>
+                    <p>Intégrer une Licence spécialisée en Cybersécurité, orientée audit et défense des systèmes.</p>
+                </div>
+                <div class="carte-info-standard">
+                    <h3>Carrière en Cybersécurité</h3>
+                    <p>Travailler dans la gestion de la sécurité réseau, la prévention des attaques et la mise en œuvre
+                        de politiques de sécurité robustes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Expériences Professionnelles -->
+    <section id="section-experiences-professionnelles" class="section-generale fond-plus-fonce">
+        <div class="conteneur-principal">
+            <h2 class="titre-de-section alignement-centre">Expériences Professionnelles</h2>
+            <div class="frise-chronologique-standard">
+
+                <div class="element-frise-standard">
+                    <div class="marqueur-temporel"></div>
+                    <div class="contenu-frise-standard">
+                        <span class="date-evenement">Dec 2024 - Jan 2025</span>
+                        <h3>Mutuelle Bleue | Melun</h3>
+                        <p>Installation, maintenance, dépannage, réparation et aide aux utilisateurs.</p>
+                    </div>
+                </div>
+
+                <div class="element-frise-standard">
+                    <div class="marqueur-temporel"></div>
+                    <div class="contenu-frise-standard">
+                        <span class="date-evenement">Juin 2024</span>
+                        <h3>SDIS 77 | Melun</h3>
+                        <p>Cybersécurité, fondamentaux de la cyber.</p>
+                    </div>
+                </div>
+
+                <div class="element-frise-standard">
+                    <div class="marqueur-temporel"></div>
+                    <div class="contenu-frise-standard">
+                        <span class="date-evenement">Nov-Dec 2023</span>
+                        <h3>Mutuelle Bleue | Melun</h3>
+                        <p>Installation, maintenance, dépannage, réparation et aide aux utilisateurs.</p>
+                    </div>
+                </div>
+
+                <div class="element-frise-standard">
+                    <div class="marqueur-temporel"></div>
+                    <div class="contenu-frise-standard">
+                        <span class="date-evenement">Juin 2023</span>
+                        <h3>Mutuelle Bleue | Melun</h3>
+                        <p>Installation, maintenance, dépannage, réparation et aide aux utilisateurs.</p>
+                    </div>
+                </div>
+
+                <div class="element-frise-standard">
+                    <div class="marqueur-temporel"></div>
+                    <div class="contenu-frise-standard">
+                        <span class="date-evenement">Jan 2023</span>
+                        <h3>L'infopratique | Vaux-le-pénil</h3>
+                        <p>Installation, maintenance, dépannage et réparation de matériel informatique.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Compétences Techniques -->
+    <section id="section-competences-techniques" class="section-generale">
+        <div class="conteneur-principal">
+            <h2 class="titre-de-section alignement-centre">Compétences Techniques</h2>
+            <div class="grille-quatre-colonnes">
+
+                <div class="carte-info-centre">
+                    <div class="icone-carte-grande">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h3>Développement Web</h3>
+                    <p>Maîtrise de HTML, CSS, PHP et MySQL pour des applications web dynamiques.</p>
+                </div>
+
+                <div class="carte-info-centre">
+                    <div class="icone-carte-grande">
+                        <i class="fa-solid fa-server"></i>
+                    </div>
+                    <h3>Administration Système</h3>
+                    <p>Configuration et gestion de serveurs sous Linux avec Apache.</p>
+                </div>
+
+                <div class="carte-info-centre">
+                    <div class="icone-carte-grande">
+                        <i class="fa-solid fa-database"></i>
+                    </div>
+                    <h3>Gestion de BDD</h3>
+                    <p>Conception, implémentation et optimisation de bases de données MySQL.</p>
+                </div>
+
+                <div class="carte-info-centre">
+                    <div class="icone-carte-grande">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                    <h3>Sécurité Réseau</h3>
+                    <p>Mise en place et configuration de protocoles sécurisés (FTP, SSH).</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Section Projet Koo_2_Fourchette -->
+    <section id="section-projet-koo-2-fourchette" class="section-generale fond-plus-fonce">
+        <div class="conteneur-principal">
+            <h2 class="titre-de-section alignement-centre">Projet BTS : Koo_2_Fourchette</h2>
+
+            <div class="mise-en-page-projet-split">
+                <!-- Colonne Gauche : Étapes -->
+                <ul class="liste-etapes-projet">
+                    <li class="item-etape-projet">
+                        <h3>Conception du site</h3>
+                        <p>Création de la maquette du site en HTML/CSS</p>
+                    </li>
+                    <li class="item-etape-projet">
+                        <h3>Installation du serveur</h3>
+                        <p>Mise en place d'un serveur Apache et MySQL.</p>
+                    </li>
+                    <li class="item-etape-projet">
+                        <h3>Développement dynamique</h3>
+                        <p>Site PHP/MySQL avec gestion des utilisateurs et recettes.</p>
+                    </li>
+                    <li class="item-etape-projet">
+                        <h3>Sécurisation et sauvegarde</h3>
+                        <p>Ajout d'un serveur FTP et configuration réseau sécurisée.</p>
+                    </li>
+                    <li class="item-etape-projet">
+                        <h3>Documentation du projet</h3>
+                        <p>Procédures rédigées et gestion du projet avec Trello.</p>
+                    </li>
+                </ul>
+
+                <!-- Colonne Droite : Image -->
+                <div class="bloc-image-projet-droite">
+                    <img src="assets/img/maquette-koo_2_fourchette.png" alt="Maquette Koo_2_Fourchette">
+                </div>
+            </div>
+
+            <!-- Bas de page : Réalisations Clés -->
+            <div class="bloc-realisations-cles">
+                <h3>Réalisations Clés du Projet</h3>
+                <p>
+                    Création du site de partage de recettes, mise en place et configuration d'un serveur Apache sous
+                    Linux,
+                    gestion complète des utilisateurs et des recettes (CRUD), et élaboration d'un schéma réseau
+                    détaillé.
+                    <br><br>
+                    Ce projet m'a permis de combiner mes compétences en développement web et en administration réseau
+                    de manière concrète, tout en appliquant une méthode de gestion de projet professionnelle.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Procédures Techniques (PDF) -->
+    <section id="section-procedures-techniques" class="section-generale alignement-centre">
+        <div class="conteneur-principal">
+            <h2 class="titre-de-section">Procédures Techniques</h2>
+            <p class="mb-4">
+                Documentation technique réalisée dans le cadre de mes projets.
+            </p>
+
+            <div class="grille-fichiers-pdf">
+
+                <!-- PDF 1 -->
+                <div class="carte-fichier-pdf">
+                    <h3>Adressage IP</h3>
+                    <iframe src="assets/files/Procédure Adressage IP.pdf" class="visualiseur-pdf"></iframe>
+                </div>
+
+                <!-- PDF 2 -->
+                <div class="carte-fichier-pdf">
+                    <h3>Dossier Partagé</h3>
+                    <iframe src="assets/files/Procédure Dossier Partagé.pdf" class="visualiseur-pdf"></iframe>
+                </div>
+
+                <!-- PDF 3 -->
+                <div class="carte-fichier-pdf">
+                    <h3>Redirection de Port</h3>
+                    <iframe src="assets/files/Procédure Redirection de Port.pdf" class="visualiseur-pdf"></iframe>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Pied de page et contact -->
+    <footer id="pied-de-page-contact" class="section-generale fond-plus-fonce style-pied-de-page">
+        <div class="conteneur-principal alignement-centre">
+            <h2 class="titre-de-section">Contact</h2>
+            <p class="marge-basse-4">
+                Merci de votre attention. N'hésitez pas à me contacter pour toute opportunité de stage ou pour discuter
+                de mon projet professionnel.<br>
+                <span class="texte-surligne">Je suis activement disponible pour un stage dans le domaine des réseaux ou
+                    de la cybersécurité.</span>
+            </p>
+
+            <div class="liens-contact-boutons">
+                <a href="mailto:quentinblt77@gmail.com" class="bouton-primaire">quentinblt77@gmail.com</a>
+                <a href="tel:+33769814335" class="bouton-secondaire">07 69 81 43 35</a>
+            </div>
+
+            <div class="liens-documents-telechargement">
+                <a href="assets/files/CV_THEPOT_QUENTIN.pdf" target="_blank" class="lien-simple">Mon CV</a>
+                <a href="assets/files/Lettre_de_motivation_THEPOT_QUENTIN.pdf" target="_blank"
+                    class="lien-simple">Lettre
+                    de Motivation</a>
+            </div>
+
+            <p class="texte-copyright">Quentin THEPOT - 2026</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

@@ -98,7 +98,6 @@ img {
 
 .bouton-primaire:hover {
   background-color: #E0E0E0;
-  transform: translateY(-2px);
 }
 
 .bouton-secondaire {
@@ -109,7 +108,6 @@ img {
 
 .bouton-secondaire:hover {
   border-color: #FFFFFF;
-  transform: translateY(-2px);
 }
 
 .bouton-contour {
@@ -282,7 +280,6 @@ img {
 
 .carte-info-standard:hover,
 .carte-info-centre:hover {
-  transform: translateY(-5px);
   border-color: #555;
 }
 
@@ -412,7 +409,6 @@ img {
 }
 
 .carte-option-bts:hover {
-  transform: translateY(-5px);
   border-color: #FFFFFF;
 }
 

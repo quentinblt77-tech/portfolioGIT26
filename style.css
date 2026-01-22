@@ -135,23 +135,33 @@ img {
 }
 
 .conteneur-navigation {
-  max-width: 1200px;
+  max-width: 1400px;
+  /* Elargi pour plus d'espace */
   margin: 0 auto;
   display: flex;
   justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  padding: 0 20px;
+  gap: 5px;
+  /* Réduit l'espace entre les liens */
+  flex-wrap: nowrap;
+  /* Empêche le retour à la ligne */
+  padding: 0 10px;
+  overflow-x: auto;
+  /* Permet le scroll horizontal si vraiment trop petit sur mobile */
 }
 
 .lien-nav {
   color: #A1A1A6;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
+  /* Légèrement plus petit */
   font-weight: 500;
-  padding: 8px 20px;
+  padding: 8px 12px;
+  /* Moins de padding latéral */
   border-radius: 50px;
   transition: all 0.3s ease;
+  white-space: nowrap;
+  /* Empêche le texte de se couper */
 }
+
 
 .lien-nav:hover {
   color: #FFFFFF;
@@ -412,24 +422,24 @@ img {
 
 /* Highlight for the chosen option */
 .carte-option-active {
-  border: 2px solid #007AFF;
-  /* Blue border to highlight */
+  border: 2px solid #FFFFFF;
+  /* White border to highlight */
   background-color: #1a1a20;
-  box-shadow: 0 0 20px rgba(0, 122, 255, 0.15);
-  /* Subtle blue glow */
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+  /* Subtle white glow */
   transform: scale(1.05);
   /* Slightly bigger */
 }
 
 .carte-option-active:hover {
-  border-color: #007AFF;
-  /* Keep blue on hover */
+  border-color: #FFFFFF;
+  /* Keep white on hover */
 }
 
 .badge-choix {
   display: inline-block;
-  background-color: #007AFF;
-  color: #FFFFFF;
+  background-color: #FFFFFF;
+  color: #000000;
   font-size: 0.8rem;
   font-weight: 600;
   padding: 4px 12px;

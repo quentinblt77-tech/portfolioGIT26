@@ -278,7 +278,6 @@ img {
   max-width: 400px;
 }
 
-.carte-info-standard:hover,
 .carte-info-centre:hover {
   border-color: #555;
 }
@@ -404,12 +403,40 @@ img {
   flex: 1;
   min-width: 280px;
   text-align: center;
-  transition: transform 0.2s;
-
+  transition: transform 0.2s, border-color 0.2s;
+  position: relative;
+  /* For the badge positioning if needed */
 }
 
-.carte-option-bts:hover {
-  border-color: #FFFFFF;
+/* .carte-option-bts:hover removed to prevent highlighting on non-active cards (SLAM) */
+
+/* Highlight for the chosen option */
+.carte-option-active {
+  border: 2px solid #007AFF;
+  /* Blue border to highlight */
+  background-color: #1a1a20;
+  box-shadow: 0 0 20px rgba(0, 122, 255, 0.15);
+  /* Subtle blue glow */
+  transform: scale(1.05);
+  /* Slightly bigger */
+}
+
+.carte-option-active:hover {
+  border-color: #007AFF;
+  /* Keep blue on hover */
+}
+
+.badge-choix {
+  display: inline-block;
+  background-color: #007AFF;
+  color: #FFFFFF;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .carte-option-bts h3 {
@@ -537,33 +564,125 @@ img {
 /* PDF Grid */
 .grille-fichiers-pdf {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
   margin-top: 40px;
 }
 
 .carte-fichier-pdf {
   background: #1C1C1E;
-  padding: 20px;
+  padding: 30px;
   border-radius: 12px;
   border: 1px solid #2C2C2E;
-
+  text-align: center;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
 }
 
-.carte-fichier-pdf h3 {
-  margin-bottom: 15px;
-  color: #FFFFFF;
+.carte-fichier-pdf:hover {
+  transform: translateY(-5px);
+  border-color: #444;
 }
 
 .visualiseur-pdf {
   width: 100%;
-  height: 400px;
+  height: 300px;
+  /* Un peu moins haut pour garder l'équilibre */
   border: 1px solid #2C2C2E;
   border-radius: 8px;
   background-color: #333;
+  margin-bottom: 20px;
+}
+
+.icone-pdf {
+  font-size: 3.5rem;
+  color: #A1A1A6;
+  margin-bottom: 20px;
+  transition: color 0.3s ease;
+}
+
+.carte-fichier-pdf:hover .icone-pdf {
+  color: #FFFFFF;
+}
+
+.carte-fichier-pdf h3 {
+  margin-bottom: 20px;
+  color: #FFFFFF;
+  font-size: 1.3rem;
+}
+
+.actions-pdf {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  width: 100%;
+  margin-top: auto;
+  /* Pushes buttons to bottom if height varies */
+}
+
+.bouton-voir,
+.bouton-telecharger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex: 1;
+}
+
+.bouton-voir {
+  background-color: #FFFFFF;
+  color: #000000;
+  border: 1px solid #FFFFFF;
+}
+
+.bouton-voir:hover {
+  background-color: #E0E0E0;
+  border-color: #E0E0E0;
+}
+
+.bouton-telecharger {
+  background-color: transparent;
+  color: #FFFFFF;
+  border: 1px solid #2C2C2E;
+}
+
+.bouton-telecharger:hover {
+  background-color: #2C2C2E;
+  border-color: #555;
 }
 
 /* Contact */
+.badge-contact-primaire,
+.badge-contact-secondaire {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: default;
+}
+
+.badge-contact-primaire {
+  background-color: #FFFFFF;
+  color: #000000;
+  border: 1px solid #FFFFFF;
+}
+
+.badge-contact-secondaire {
+  background-color: #1C1C1E;
+  color: #FFFFFF;
+  border: 1px solid #2C2C2E;
+}
+
 .liens-contact-boutons,
 .liens-documents-telechargement {
   display: flex;

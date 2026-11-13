@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self'; base-uri 'self'; form-action 'none'">
+    <title>Projet AD Unique chez VIASANTÉ — Quentin THEPOT</title>
+    <meta name="description" content="Stage BTS SIO chez VIASANTÉ Mutuelle : migration des postes vers un domaine Active Directory unique, flotte mobile Intune, sauvegardes AS400 et hotline GLPI.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Projet AD Unique chez VIASANTÉ — Quentin THEPOT">
+    <meta property="og:description" content="Stage BTS SIO chez VIASANTÉ Mutuelle : migration des postes vers un domaine Active Directory unique, flotte mobile Intune, sauvegardes AS400 et hotline GLPI.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <script src="../js/script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Barre de Navigation Supérieure ("Menu") -->
+    <nav class="barre-navigation-fixe">
+        <div class="conteneur-navigation">
+            <a href="../index.html" class="marque-nav">Quentin THEPOT<span>BTS SIO · SISR</span></a>
+            <div class="groupe-liens-nav">
+                <a href="../index.html#section-presentation-profil" class="lien-nav">Présentation</a>
+                <a href="../index.html#section-bts-sio-explications" class="lien-nav">BTS SIO</a>
+                <a href="../index.html#section-parcours-scolaire" class="lien-nav">Parcours</a>
+                <a href="../index.html#section-objectifs-professionnels" class="lien-nav">Objectifs</a>
+                <a href="../index.html#section-experiences-professionnelles" class="lien-nav">Expériences</a>
+                <a href="../index.html#section-competences-techniques" class="lien-nav">Compétences</a>
+                <a href="../index.html#section-realisations" class="lien-nav lien-nav-actif">Projets</a>
+                <a href="veille.html" class="lien-nav">Veille</a>
+                <a href="../index.html#section-documents" class="lien-nav">Documents</a>
+                <a href="#pied-de-page-contact" class="lien-nav">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Bannière de la page -->
+    <header class="banniere-principale-entete banniere-page-interne">
+        <div class="conteneur-principal">
+            <div class="grille-banniere-contenu">
+                <div class="bloc-texte-infos">
+                    <a href="../index.html#section-realisations" class="fil-ariane">← Retour aux projets</a>
+                    <h1>Projet AD Unique</h1>
+                    <p class="sous-titre-banniere">VIASANTÉ Mutuelle · Melun · Stage du 18 mai au 26 juin 2026 (6 semaines) · BTS SIO 1re année</p>
+                    <div class="liste-etiquettes">
+                        <span class="etiquette">Active Directory</span>
+                        <span class="etiquette">GPO</span>
+                        <span class="etiquette">Azure AD</span>
+                        <span class="etiquette">Intune</span>
+                        <span class="etiquette">AS400</span>
+                        <span class="etiquette">GLPI</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contexte -->
+    <section class="section-generale">
+        <div class="conteneur-principal">
+            <h2 class="titre-de-section alignement-centre">Contexte</h2>
+            <p class="paragraphe-intro-section alignement-centre">
+                VIASANTÉ Mutuelle est la mutuelle santé nationale du groupe AG2R LA MONDIALE (56 agences, certifiée
+                ISO 9001). C'est mon quatrième stage dans cette entreprise, au sein du pôle Infrastructure Tech de la
+                Direction SI. Le 31 décembre 2023, Mutuelle Bleue a été absorbée par VIASANTÉ : il fallait donc unifier
+                deux systèmes d'information.
+            </p>
+
+            <div class="grille-quatre-colonnes">
+                <div class="carte-info-centre">
+                    <div class="icone-carte-grande"><i class="fa-solid fa-desktop"></i></div>
+                    <h3>~800 postes</h3>
+                    <p>Fixes et portables, administrés à distance par le pôle support.</p>
+                </div>
+                <div class="carte-info-centre">
+                    <div class="icone-carte-grande"><i class="fa-solid fa-server"></i></div>
+                    <h3>10 serveurs</h3>
+                    <p>Cluster de serveurs physiques sous VMware ESXi 7.0.3.</p>
+                </div>
+                <div class="carte-info-centre">
+                    <div class="icone-carte-grande"><i class="fa-solid fa-sitemap"></i></div>
+                    <h3>4 contrôleurs</h3>
+                    <p>Contrôleurs de domaine Windows Server 2016.</p>
+                </div>
+                <div class="carte-info-centre">
+                    <div class="icone-carte-grande"><i class="fa-solid fa-network-wired"></i></div>
+                    <h3>2 serveurs DHCP</h3>
+                    <p>Redondants, sous Windows Server 2019.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission principale : AD Unique -->
+    <section class="section-generale fond-plus-fonce">
+        <div class="conteneur-principal">
+            <h2 class="titre-de-section alignement-centre">Mission principale : Projet « AD Unique »</h2>
+            <p class="paragraphe-intro-section alignement-centre">
+                Basculer tous les postes du site de Melun sur un seul domaine, <strong>viasante.cloud</strong>, en
+                travaillant avec deux prestataires externes. Objectif : masteriser au moins un poste par jour et en
+                configurer un de A à Z pour un utilisateur.
+            </p>
+
+            <div class="mise-en-page-projet-split">
+                <ul class="liste-etapes-projet">
+                    <li class="item-etape-projet">
+                        <h3>1. Récupération & planification</h3>
+                        <p>Rendez-vous avec l'utilisateur, poste rapporté à l'atelier.</p>
+                    </li>
+                    <li class="item-etape-projet">
+                        <h3>2. Sauvegarde des données</h3>
+                        <p>Copie intégrale des fichiers sur Microsoft OneDrive.</p>
+                    </li>
+                    <li class="item-etape-projet">
+                        <h3>3. Masterisation du poste</h3>
+                        <p>Image Windows 11 personnalisée déployée depuis une clé USB bootable.</p>
+                    </li>
+                    <li class="item-etape-projet">
+                        <h3>4. Intégration au domaine</h3>
+                        <p>Renommage et jonction à viasante.cloud via <code>sysdm.cpl</code>.</p>
+                    </li>
+                </ul>
+                <ul class="liste-etapes-projet">
+                    <li class="item-etape-projet">
+                        <h3>5. Organisation & GPO</h3>
+                        <p>Placement dans la bonne OU, ajout des groupes de sécurité, <code>gpupdate /force</code>.</p>
+                    </li>
+                    <li class="item-etape-projet">
+                        <h3>6. Nettoyage de l'ancien agent</h3>
+                        <p>Désinstallation de l'agent de gestion locale avec <code>ccmsetup.exe /uninstall</code>.</p>
+                    </li>
+                    <li class="item-etape-projet">
+                        <h3>7. Enrôlement Intune & Azure AD</h3>
+                        <p><code>dsregcmd /join</code> puis synchronisation avec l'environnement cloud.</p>
+                    </li>
+                    <li class="item-etape-projet">
+                        <h3>8. Finalisation & restitution</h3>
+                        <p>Statut « Conforme » dans Intune (FortiClient, Citrix, Zscaler déployés), poste rendu le soir
+                            même.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Missions complémentaires -->
+    <section class="section-generale">
+        <div class="conteneur-principal">
+            <h2 class="titre-de-section alignement-centre">Missions complémentaires</h2>
+
+            <div class="grille-trois-cartes-centree">
+                <div class="carte-info-standard">
+                    <h3><i class="fa-solid fa-mobile-screen"></i> Renouvellement de la flotte mobile</h3>
+                    <p>Planification des rendez-vous avec les collaborateurs, clonage des données avec Smart Switch et
+                        enrôlement des nouveaux smartphones dans Microsoft Intune. Suivi dans le tableau
+                        « Renouv_Android_2026_Listing » et dans l'outil de suivi des stocks multi-sites.</p>
+                </div>
+                <div class="carte-info-standard">
+                    <h3><i class="fa-solid fa-tape"></i> Sauvegardes du serveur AS400</h3>
+                    <p>Chaque jour : connexion à la console de la librairie de bandes IBM TS4300, déverrouillage des
+                        magasins, échange des cartouches puis vérification des tâches de la nuit. Les bandes sont
+                        ensuite externalisées sur un autre site.</p>
+                </div>
+                <div class="carte-info-standard">
+                    <h3><i class="fa-solid fa-headset"></i> Support utilisateur & hotline</h3>
+                    <p>Demandes reçues par téléphone, ticket GLPI ou Microsoft Teams, prises en main à distance et
+                        traçabilité dans GLPI. Pannes les plus fréquentes : impression, session bloquée, perte de
+                        réseau.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Difficultés & solutions -->
+    <section class="section-generale fond-plus-fonce">
+        <div class="conteneur-principal">
+            <h2 class="titre-de-section alignement-centre">Difficultés rencontrées & solutions</h2>
+
+            <div class="conteneur-tableau-defilant">
+                <table class="tableau-synthese tableau-court">
+                    <thead>
+                        <tr>
+                            <th>Mission</th>
+                            <th>Difficulté rencontrée</th>
+                            <th>Solution trouvée</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Migration des postes</strong></td>
+                            <td>Poste « Non conforme » dans Intune alors que la procédure avait été suivie.</td>
+                            <td>Délai de synchronisation : attendre 10 à 15 minutes puis forcer une synchronisation
+                                depuis le portail, sans relancer toute la procédure.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Flotte mobile</strong></td>
+                            <td>Codes Microsoft Authenticator perdus lors du changement de téléphone.</td>
+                            <td>Activation de la sauvegarde cloud des codes avant de rendre l'ancien téléphone.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sauvegardes AS400</strong></td>
+                            <td>Cassette du soir oubliée lors de la rotation des bandes.</td>
+                            <td>Mail automatique à 16 h envoyé par le service qui gère l'AS400.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bilan -->
+    <section class="section-generale">
+        <div class="conteneur-principal">
+            <h2 class="titre-de-section alignement-centre">Bilan</h2>
+
+            <div class="grille-trois-cartes-centree">
+                <div class="carte-info-standard alignement-centre">
+                    <h3>~30 postes</h3>
+                    <p>Migrés et configurés sur le site de Melun dans le cadre du projet AD Unique.</p>
+                </div>
+                <div class="carte-info-standard alignement-centre">
+                    <h3>~10 téléphones</h3>
+                    <p>Renouvelés : clonage des données puis enrôlement dans Intune.</p>
+                </div>
+                <div class="carte-info-standard alignement-centre">
+                    <h3>6 semaines</h3>
+                    <p>De sauvegardes AS400 : rotation des bandes assurée chaque matin, sans interruption.</p>
+                </div>
+            </div>
+
+            <div class="bloc-realisations-cles marge-haute-40">
+                <h3>Ce que ce stage m'a apporté</h3>
+                <p>
+                    Revenir dans cette entreprise pour un quatrième stage m'a permis de travailler en autonomie dès le premier jour. J'ai
+                    appris à administrer un annuaire Active Directory (OU, groupes de sécurité, GPO), à masteriser et
+                    rendre conforme un poste dans Intune, et à gérer la relation avec les utilisateurs et les
+                    prestataires.
+                    <br><br>
+                    Lien avec le BTS : sauvegarde et restauration, support et gestion des incidents (module SMDSI),
+                    Active Directory.
+                </p>
+                <div class="liste-etiquettes etiquettes-centrees">
+                    <span class="etiquette">Gérer le patrimoine informatique</span>
+                    <span class="etiquette">Répondre aux incidents et aux demandes</span>
+                    <span class="etiquette">Travailler en mode projet</span>
+                    <span class="etiquette">Mettre à disposition un service</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pied de page et contact -->
+    <footer id="pied-de-page-contact" class="section-generale fond-plus-fonce style-pied-de-page">
+        <div class="conteneur-principal alignement-centre">
+            <h2 class="titre-de-section">Contact</h2>
+
+            <div class="liens-contact-boutons">
+                <a href="mailto:quentinblt77@gmail.com" class="badge-contact-primaire"><i class="fa-regular fa-envelope"></i> quentinblt77@gmail.com</a>
+                <a href="tel:+33769814335" class="badge-contact-secondaire"><i class="fa-solid fa-phone"></i> 07 69 81 43 35</a>
+            </div>
+
+            <div class="liens-documents-telechargement">
+                <a href="../index.html#section-realisations" class="lien-simple">Tous les projets</a>
+                <a href="../assets/files/CV-Quentin-THEPOT.pdf" target="_blank" rel="noopener" class="lien-simple">Télécharger mon CV</a>
+            </div>
+
+            <p class="texte-copyright">© 2026 Quentin THEPOT</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

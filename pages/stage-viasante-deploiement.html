@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self'; base-uri 'self'; form-action 'none'">
+    <title>Déploiement de 80 postes chez VIASANTÉ — Quentin THEPOT</title>
+    <meta name="description" content="Stage chez VIASANTÉ Mutuelle : création d'une image Windows maître et déploiement par le réseau (PXE, Sysprep, Acronis) sur 80 portables.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Déploiement de 80 postes chez VIASANTÉ — Quentin THEPOT">
+    <meta property="og:description" content="Masterisation et déploiement réseau de 80 portables après la fusion de Mutuelle Bleue et de VIASANTÉ.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <script src="../js/script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Barre de Navigation Supérieure ("Menu") -->
+    <nav class="barre-navigation-fixe">
+        <div class="conteneur-navigation">
+            <a href="../index.html" class="marque-nav">Quentin THEPOT<span>BTS SIO · SISR</span></a>
+            <div class="groupe-liens-nav">
+                <a href="../index.html#section-presentation-profil" class="lien-nav">Présentation</a>
+                <a href="../index.html#section-bts-sio-explications" class="lien-nav">BTS SIO</a>
+                <a href="../index.html#section-parcours-scolaire" class="lien-nav">Parcours</a>
+                <a href="../index.html#section-objectifs-professionnels" class="lien-nav">Objectifs</a>
+                <a href="../index.html#section-experiences-professionnelles" class="lien-nav">Expériences</a>
+                <a href="../index.html#section-competences-techniques" class="lien-nav">Compétences</a>
+                <a href="../index.html#section-realisations" class="lien-nav lien-nav-actif">Projets</a>
+                <a href="veille.html" class="lien-nav">Veille</a>
+                <a href="../index.html#section-documents" class="lien-nav">Documents</a>
+                <a href="#pied-de-page-contact" class="lien-nav">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Bannière de la page -->
+    <header class="banniere-principale-entete banniere-page-interne">
+        <div class="conteneur-principal">
+            <div class="grille-banniere-contenu">
+                <div class="bloc-texte-infos">
+                    <a href="../index.html#section-realisations" class="fil-ariane">← Retour aux projets</a>
+                    <h1>Déploiement de 80 postes</h1>
+                    <p class="sous-titre-banniere">VIASANTÉ Mutuelle · Melun · Stage du 2 au 20 décembre 2024 et du 6
+                        au 24 janvier 2025 (6 semaines) · Bac Pro Systèmes Numériques</p>
+                    <div class="liste-etiquettes">
+                        <span class="etiquette">Masterisation</span>
+                        <span class="etiquette">PXE</span>
+                        <span class="etiquette">Sysprep</span>
+                        <span class="etiquette">Acronis Snap Deploy</span>
+                        <span class="etiquette">Azure AD</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contexte -->
+    <section class="section-generale">
+        <div class="conteneur-principal">
+            <h2 class="titre-de-section alignement-centre">Contexte</h2>
+            <p class="paragraphe-intro-section alignement-centre">
+                Après la fusion de Mutuelle Bleue avec VIASANTÉ, chaque utilisateur qui avait un poste fixe et un
+                portable devait passer à un poste unique, notamment pour réduire le nombre de licences antivirus.
+                Installer 80 portables un par un aurait pris des semaines : nous avons procédé par masterisation, c'est-à-dire
+                en créant une image maître (système, logiciels, paramètres) copiée ensuite sur tous les postes par le
+                réseau.
+            </p>
+
+            <div class="grille-trois-cartes-centree">
+                <div class="carte-info-standard">
+                    <p class="valeur-chiffre">80</p>
+                    <p class="libelle-chiffre">portables HP préparés et déployés</p>
+                </div>
+                <div class="carte-info-standard">
+                    <p class="valeur-chiffre">1 semaine</p>
+                    <p class="libelle-chiffre">de travail à l'atelier pour l'ensemble du parc</p>
+                </div>
+                <div class="carte-info-standard">
+                    <p class="valeur-chiffre">1 image</p>
+                    <p class="libelle-chiffre">maître, identique sur tous les postes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Déroulé -->
+    <section class="section-generale fond-plus-fonce">
+        <div class="conteneur-principal">
+            <h2 class="titre-de-section alignement-centre">Déroulé</h2>
+
+            <div class="mise-en-page-projet-split">
+                <ul class="liste-etapes-projet">
+                    <li class="item-etape-projet">
+                        <h3>1. Préparation du PC maître</h3>
+                        <p>Installation de Windows 10, des logiciels, des mises à jour et des paramètres de
+                            l'entreprise, puis <code>Sysprep</code> pour retirer les informations propres à la
+                            machine.</p>
+                    </li>
+                    <li class="item-etape-projet">
+                        <h3>2. Création de l'image</h3>
+                        <p>Dans le BIOS, activation du « Legacy Support » et désactivation du Secure Boot. Démarrage
+                            réseau (PXE) sur Acronis PXE Server, puis Master Image Creator : l'image est stockée sur le
+                            serveur.</p>
+                    </li>
+                    <li class="item-etape-projet">
+                        <h3>3. Mise en réseau des postes</h3>
+                        <p>Branchement des portables trois par trois au switch relié au serveur, même réglage du BIOS
+                            et démarrage PXE sur l'agent Acronis Snap Deploy 5.</p>
+                    </li>
+                </ul>
+                <ul class="liste-etapes-projet">
+                    <li class="item-etape-projet">
+                        <h3>4. Déploiement</h3>
+                        <p>Depuis la console Acronis du serveur, sélection des postes prêts puis « Déployer l'image ».</p>
+                    </li>
+                    <li class="item-etape-projet">
+                        <h3>5. Finalisation</h3>
+                        <p>Renommage de chaque poste, jonction au domaine avec <code>sysdm.cpl</code> et à Azure AD
+                            avec <code>dsregcmd /join</code>.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Autres tâches -->
+    <section class="section-generale">
+        <div class="conteneur-principal">
+            <h2 class="titre-de-section alignement-centre">Autres tâches au support</h2>
+
+            <div class="grille-trois-cartes-centree">
+                <div class="carte-info-standard">
+                    <div class="icone-carte-grande"><i class="fa-solid fa-hard-drive"></i></div>
+                    <h3>Disques SSD</h3>
+                    <p>Remplacement de disques HDD par des SSD et clonage des données.</p>
+                </div>
+                <div class="carte-info-standard">
+                    <div class="icone-carte-grande"><i class="fa-brands fa-windows"></i></div>
+                    <h3>Mises à niveau</h3>
+                    <p>Mise à niveau de Windows à partir d'une image ISO, pour permettre l'installation d'un nouvel
+                        antivirus.</p>
+                </div>
+                <div class="carte-info-standard">
+                    <div class="icone-carte-grande"><i class="fa-solid fa-headset"></i></div>
+                    <h3>Assistance</h3>
+                    <p>Aide aux utilisateurs par téléphone pour corriger des problèmes logiciels.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Progression -->
+    <section class="section-generale fond-plus-fonce">
+        <div class="conteneur-principal">
+            <div class="bloc-realisations-cles">
+                <h3>Une compétence construite sur plusieurs stages</h3>
+                <p>
+                    J'ai découvert la masterisation dès mon premier stage dans l'entreprise, en juin 2023, sur des PC
+                    dont nous avions remplacé les disques par des SSD. Entre 2024 et 2025, je l'ai appliquée à grande
+                    échelle sur 80 postes. En 2026, la jonction au domaine et à Azure AD est devenue le cœur du projet
+                    AD Unique.
+                </p>
+                <div class="conteneur-lien-document">
+                    <a href="stage-viasante-2026.html" class="bouton-contour">Voir le projet AD Unique</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pied de page et contact -->
+    <footer id="pied-de-page-contact" class="section-generale style-pied-de-page">
+        <div class="conteneur-principal alignement-centre">
+            <h2 class="titre-de-section">Contact</h2>
+
+            <div class="liens-contact-boutons">
+                <a href="mailto:quentinblt77@gmail.com" class="badge-contact-primaire"><i class="fa-regular fa-envelope"></i> quentinblt77@gmail.com</a>
+                <a href="tel:+33769814335" class="badge-contact-secondaire"><i class="fa-solid fa-phone"></i> 07 69 81 43 35</a>
+            </div>
+
+            <div class="liens-documents-telechargement">
+                <a href="../index.html#section-realisations" class="lien-simple">Tous les projets</a>
+                <a href="../assets/files/CV-Quentin-THEPOT.pdf" target="_blank" rel="noopener" class="lien-simple">Télécharger mon CV</a>
+            </div>
+
+            <p class="texte-copyright">© 2026 Quentin THEPOT</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

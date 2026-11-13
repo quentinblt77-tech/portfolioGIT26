@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self'; base-uri 'self'; form-action 'none'">
+    <title>Campagne de phishing au SDIS 77 — Quentin THEPOT</title>
+    <meta name="description" content="Stage cybersécurité au SDIS 77 : conception d'une campagne de phishing simulée auprès de 1 352 agents, analyse des résultats et sensibilisation.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Campagne de phishing au SDIS 77 — Quentin THEPOT">
+    <meta property="og:description" content="Conception d'une campagne de phishing simulée auprès de 1 352 agents, analyse des résultats et sensibilisation.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <script src="../js/script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Barre de Navigation Supérieure ("Menu") -->
+    <nav class="barre-navigation-fixe">
+        <div class="conteneur-navigation">
+            <a href="../index.html" class="marque-nav">Quentin THEPOT<span>BTS SIO · SISR</span></a>
+            <div class="groupe-liens-nav">
+                <a href="../index.html#section-presentation-profil" class="lien-nav">Présentation</a>
+                <a href="../index.html#section-bts-sio-explications" class="lien-nav">BTS SIO</a>
+                <a href="../index.html#section-parcours-scolaire" class="lien-nav">Parcours</a>
+                <a href="../index.html#section-objectifs-professionnels" class="lien-nav">Objectifs</a>
+                <a href="../index.html#section-experiences-professionnelles" class="lien-nav">Expériences</a>
+                <a href="../index.html#section-competences-techniques" class="lien-nav">Compétences</a>
+                <a href="../index.html#section-realisations" class="lien-nav lien-nav-actif">Projets</a>
+                <a href="veille.html" class="lien-nav">Veille</a>
+                <a href="../index.html#section-documents" class="lien-nav">Documents</a>
+                <a href="#pied-de-page-contact" class="lien-nav">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Bannière de la page -->
+    <header class="banniere-principale-entete banniere-page-interne">
+        <div class="conteneur-principal">
+            <div class="grille-banniere-contenu">
+                <div class="bloc-texte-infos">
+                    <a href="../index.html#section-realisations" class="fil-ariane">← Retour aux projets</a>
+                    <h1>Campagne de phishing</h1>
+                    <p class="sous-titre-banniere">SDIS 77 · Melun · Stage du 3 au 28 juin 2024 (4 semaines) · Bac Pro
+                        Systèmes Numériques</p>
+                    <div class="liste-etiquettes">
+                        <span class="etiquette">PhishingPoint</span>
+                        <span class="etiquette">Sensibilisation</span>
+                        <span class="etiquette">Analyse de données</span>
+                        <span class="etiquette">RSSI</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contexte -->
+    <section class="section-generale">
+        <div class="conteneur-principal">
+            <h2 class="titre-de-section alignement-centre">Contexte</h2>
+            <p class="paragraphe-intro-section alignement-centre">
+                Le SDIS 77 compte 69 casernes et plus de 4 800 agents. J'étais rattaché au RSSI, au sein de la
+                sous-direction Performance et Systèmes d'information. À l'approche des Jeux olympiques de 2024, le RSSI
+                a décidé de lancer une nouvelle campagne de phishing simulée : envoyer un faux mail piégé pour mesurer
+                la vigilance des agents et les entraîner à repérer les courriels suspects.
+            </p>
+
+            <div class="grille-trois-cartes-centree">
+                <div class="carte-info-standard">
+                    <p class="valeur-chiffre">1 352</p>
+                    <p class="libelle-chiffre">agents destinataires de la campagne</p>
+                </div>
+                <div class="carte-info-standard">
+                    <p class="valeur-chiffre">7 jours</p>
+                    <p class="libelle-chiffre">d'envoi étalé, puis une semaine d'analyse</p>
+                </div>
+                <div class="carte-info-standard">
+                    <p class="valeur-chiffre">~70 %</p>
+                    <p class="libelle-chiffre">d'autonomie, sous la supervision du RSSI</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Déroulé -->
+    <section class="section-generale fond-plus-fonce">
+        <div class="conteneur-principal">
+            <h2 class="titre-de-section alignement-centre">Déroulé de la campagne</h2>
+
+            <div class="mise-en-page-projet-split">
+                <ul class="liste-etapes-projet">
+                    <li class="item-etape-projet">
+                        <h3>1. Scénario</h3>
+                        <p>Création d'une campagne personnalisée sur PhishingPoint, l'outil d'Orange Cyberdéfense.
+                            Scénario retenu : une fausse « migration Microsoft Outlook 2024 ».</p>
+                    </li>
+                    <li class="item-etape-projet">
+                        <h3>2. Mail et page piège</h3>
+                        <p>Mise en forme du mail et de la page d'atterrissage. Le mail demande de se connecter « avant
+                            la fin de journée », tout en rassurant : l'opération « ne prend que quelques minutes ».</p>
+                    </li>
+                    <li class="item-etape-projet">
+                        <h3>3. Destinataires</h3>
+                        <p>Import de la liste des 1 352 agents (nom, prénom, adresse, fonction), qui reste
+                            confidentielle.</p>
+                    </li>
+                    <li class="item-etape-projet">
+                        <h3>4. Paramétrage et test</h3>
+                        <p>Envoi étalé à 10 mails par minute sur 7 jours, puis test complet sur ma propre boîte avant
+                            le lancement.</p>
+                    </li>
+                </ul>
+                <ul class="liste-etapes-projet">
+                    <li class="item-etape-projet">
+                        <h3>5. Résultats globaux</h3>
+                        <p>Une semaine après le lancement, calcul des taux d'ouverture du mail, de clic sur le lien et
+                            de saisie des identifiants.</p>
+                    </li>
+                    <li class="item-etape-projet">
+                        <h3>6. Analyses ciblées</h3>
+                        <p>Statistiques par sous-direction à la demande d'un chef de groupement, comparaison smartphone
+                            et ordinateur, comparaison entre encadrants et autres agents, sous Excel (filtres,
+                            formules, graphiques).</p>
+                    </li>
+                    <li class="item-etape-projet">
+                        <h3>7. Sensibilisation</h3>
+                        <p>Mail collectif pour révéler la campagne, message personnalisé à chaque agent ayant cliqué et
+                            article sur l'intranet.</p>
+                    </li>
+                </ul>
+            </div>
+            <p class="legende-tableau alignement-centre">Les résultats chiffrés de la campagne restent internes au SDIS 77.</p>
+        </div>
+    </section>
+
+    <!-- Difficultés & solutions -->
+    <section class="section-generale">
+        <div class="conteneur-principal">
+            <h2 class="titre-de-section alignement-centre">Difficultés rencontrées & solutions</h2>
+
+            <div class="conteneur-tableau-defilant">
+                <table class="tableau-synthese tableau-court">
+                    <thead>
+                        <tr>
+                            <th>Étape</th>
+                            <th>Difficulté rencontrée</th>
+                            <th>Solution trouvée</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Test de la campagne</strong></td>
+                            <td>Le mail de test était détecté comme frauduleux par la messagerie.</td>
+                            <td>Changement du nom de domaine d'envoi.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Envoi de masse</strong></td>
+                            <td>Le filtre anti-spam risquait de bloquer les 1 352 mails.</td>
+                            <td>Mise en liste blanche de l'adresse IP de la plateforme et du domaine d'envoi, ouverture
+                                des flux HTTP et HTTPS (ports 80 et 443). Demande faite au service réseau avec le
+                                RSSI.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Autres missions -->
+    <section class="section-generale fond-plus-fonce">
+        <div class="conteneur-principal">
+            <h2 class="titre-de-section alignement-centre">Autres missions</h2>
+
+            <div class="grille-trois-cartes-centree">
+                <div class="carte-info-standard">
+                    <div class="icone-carte-grande"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3>EDR et vulnérabilités</h3>
+                    <p>Découverte de l'EDR, qui surveille et bloque les menaces sur les postes, et de Cyberwatch, où
+                        j'ai enregistré des switchs pour analyser leurs vulnérabilités.</p>
+                </div>
+                <div class="carte-info-standard">
+                    <div class="icone-carte-grande"><i class="fa-solid fa-key"></i></div>
+                    <h3>Mots de passe et droits</h3>
+                    <p>Formations sur les mots de passe et les droits administrateurs, et documentation d'utilisation
+                        d'un gestionnaire de mots de passe (Bitwarden, Proton Pass).</p>
+                </div>
+                <div class="carte-info-standard">
+                    <div class="icone-carte-grande"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                    <h3>Interventions</h3>
+                    <p>Réinitialisation d'une machine blanche, un poste isolé du réseau réservé aux tâches sensibles,
+                        et aide à la résolution de problèmes utilisateurs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bilan -->
+    <section class="section-generale">
+        <div class="conteneur-principal">
+            <div class="bloc-realisations-cles">
+                <h3>Ce que j'en retiens</h3>
+                <p>
+                    Ce stage m'a fait passer de la théorie à la pratique : préparer une attaque réaliste, puis
+                    transformer ses résultats en actions de sensibilisation. J'y ai appris deux notions que j'utilise
+                    encore : les critères DICT (disponibilité, intégrité, confidentialité, traçabilité) et l'évaluation
+                    d'un risque par sa probabilité et son impact. C'est aussi ce stage qui m'a décidé à m'orienter vers
+                    la cybersécurité.
+                </p>
+                <div class="liste-etiquettes etiquettes-centrees">
+                    <span class="etiquette">Ingénierie sociale</span>
+                    <span class="etiquette">Sensibilisation</span>
+                    <span class="etiquette">Analyse de données</span>
+                    <span class="etiquette">Autonomie</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pied de page et contact -->
+    <footer id="pied-de-page-contact" class="section-generale fond-plus-fonce style-pied-de-page">
+        <div class="conteneur-principal alignement-centre">
+            <h2 class="titre-de-section">Contact</h2>
+
+            <div class="liens-contact-boutons">
+                <a href="mailto:quentinblt77@gmail.com" class="badge-contact-primaire"><i class="fa-regular fa-envelope"></i> quentinblt77@gmail.com</a>
+                <a href="tel:+33769814335" class="badge-contact-secondaire"><i class="fa-solid fa-phone"></i> 07 69 81 43 35</a>
+            </div>
+
+            <div class="liens-documents-telechargement">
+                <a href="../index.html#section-realisations" class="lien-simple">Tous les projets</a>
+                <a href="../assets/files/CV-Quentin-THEPOT.pdf" target="_blank" rel="noopener" class="lien-simple">Télécharger mon CV</a>
+            </div>
+
+            <p class="texte-copyright">© 2026 Quentin THEPOT</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

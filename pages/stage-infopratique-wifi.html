@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self'; base-uri 'self'; form-action 'none'">
+    <title>Réseau Wi-Fi d'un hôtel — Quentin THEPOT</title>
+    <meta name="description" content="Stage chez L'infopratique : remplacement complet du réseau Wi-Fi d'un hôtel parisien sur 7 niveaux (routeur, switch PoE, 7 bornes).">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Réseau Wi-Fi d'un hôtel — Quentin THEPOT">
+    <meta property="og:description" content="Remplacement complet du réseau Wi-Fi d'un hôtel parisien sur 7 niveaux.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <script src="../js/script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Barre de Navigation Supérieure ("Menu") -->
+    <nav class="barre-navigation-fixe">
+        <div class="conteneur-navigation">
+            <a href="../index.html" class="marque-nav">Quentin THEPOT<span>BTS SIO · SISR</span></a>
+            <div class="groupe-liens-nav">
+                <a href="../index.html#section-presentation-profil" class="lien-nav">Présentation</a>
+                <a href="../index.html#section-bts-sio-explications" class="lien-nav">BTS SIO</a>
+                <a href="../index.html#section-parcours-scolaire" class="lien-nav">Parcours</a>
+                <a href="../index.html#section-objectifs-professionnels" class="lien-nav">Objectifs</a>
+                <a href="../index.html#section-experiences-professionnelles" class="lien-nav">Expériences</a>
+                <a href="../index.html#section-competences-techniques" class="lien-nav">Compétences</a>
+                <a href="../index.html#section-realisations" class="lien-nav lien-nav-actif">Projets</a>
+                <a href="veille.html" class="lien-nav">Veille</a>
+                <a href="../index.html#section-documents" class="lien-nav">Documents</a>
+                <a href="#pied-de-page-contact" class="lien-nav">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Bannière de la page -->
+    <header class="banniere-principale-entete banniere-page-interne">
+        <div class="conteneur-principal">
+            <div class="grille-banniere-contenu">
+                <div class="bloc-texte-infos">
+                    <a href="../index.html#section-realisations" class="fil-ariane">← Retour aux projets</a>
+                    <h1>Réseau Wi-Fi d'un hôtel</h1>
+                    <p class="sous-titre-banniere">L'infopratique · Vaux-le-Pénil · Stage du 3 au 20 janvier 2023 (3
+                        semaines) · Bac Pro Systèmes Numériques</p>
+                    <div class="liste-etiquettes">
+                        <span class="etiquette">Wi-Fi</span>
+                        <span class="etiquette">Switch PoE</span>
+                        <span class="etiquette">Adressage IP</span>
+                        <span class="etiquette">Dépannage</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contexte -->
+    <section class="section-generale">
+        <div class="conteneur-principal">
+            <h2 class="titre-de-section alignement-centre">Contexte</h2>
+            <p class="paragraphe-intro-section alignement-centre">
+                L'infopratique est une entreprise individuelle d'installation, de maintenance et de réparation
+                informatique pour les PME et les particuliers. À la suite d'un nouveau contrat, nous devions refaire
+                entièrement le Wi-Fi d'un hôtel parisien, devenu totalement défaillant. Objectif : capter le Wi-Fi à
+                tous les étages, sans coupure.
+            </p>
+
+            <div class="grille-trois-cartes-centree">
+                <div class="carte-info-standard">
+                    <p class="valeur-chiffre">7 niveaux</p>
+                    <p class="libelle-chiffre">6 étages et le rez-de-chaussée, une borne par niveau</p>
+                </div>
+                <div class="carte-info-standard">
+                    <p class="valeur-chiffre">9 équipements</p>
+                    <p class="libelle-chiffre">un routeur 8 ports, un switch 16 ports PoE, 7 bornes Wi-Fi</p>
+                </div>
+                <div class="carte-info-standard">
+                    <p class="valeur-chiffre">2 jours</p>
+                    <p class="libelle-chiffre">un jour de préparation à l'atelier, un jour sur site</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Déroulé -->
+    <section class="section-generale fond-plus-fonce">
+        <div class="conteneur-principal">
+            <h2 class="titre-de-section alignement-centre">Déroulé de l'intervention</h2>
+
+            <div class="mise-en-page-projet-split">
+                <div>
+                    <h3 class="titre-groupe">Jour 1 · À l'atelier</h3>
+                    <ul class="liste-etapes-projet">
+                        <li class="item-etape-projet">
+                            <h3>Câblage de test</h3>
+                            <p>Déballage du matériel, puis raccordement du routeur, du switch 16 ports PoE et des 7
+                                bornes en Ethernet.</p>
+                        </li>
+                        <li class="item-etape-projet">
+                            <h3>Adressage et mises à jour</h3>
+                            <p>Attribution d'une adresse IP à chaque borne et mise à jour de leur micrologiciel. Ces
+                                mises à jour étant longues, les faire à l'atelier a fait gagner un temps précieux sur
+                                site.</p>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="titre-groupe">Jour 2 · À l'hôtel</h3>
+                    <ul class="liste-etapes-projet">
+                        <li class="item-etape-projet">
+                            <h3>Repérage</h3>
+                            <p>Localisation des anciennes bornes et de la baie contenant le routeur et le switch.</p>
+                        </li>
+                        <li class="item-etape-projet">
+                            <h3>Remplacement</h3>
+                            <p>Dépose des anciennes bornes et fixation des nouvelles, installation du nouveau routeur
+                                et du nouveau switch dans la baie.</p>
+                        </li>
+                        <li class="item-etape-projet">
+                            <h3>Raccordement et adoption</h3>
+                            <p>Câblage des bornes au switch, puis adoption de chaque borne dans l'application de
+                                gestion.</p>
+                        </li>
+                        <li class="item-etape-projet">
+                            <h3>Validation</h3>
+                            <p>Test de la couverture Wi-Fi à chaque étage avant de quitter l'hôtel.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Difficulté & solution -->
+    <section class="section-generale">
+        <div class="conteneur-principal">
+            <h2 class="titre-de-section alignement-centre">Difficulté rencontrée & solution</h2>
+
+            <div class="conteneur-tableau-defilant">
+                <table class="tableau-synthese tableau-court">
+                    <thead>
+                        <tr>
+                            <th>Étape</th>
+                            <th>Difficulté rencontrée</th>
+                            <th>Solution trouvée</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Adoption des bornes</strong></td>
+                            <td>Une borne n'était pas détectée par l'application de gestion après l'installation.</td>
+                            <td>Contrôle du câblage : le câble Ethernet de la borne était défaillant. Il a été remplacé
+                                et la borne a été adoptée.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Autres missions -->
+    <section class="section-generale fond-plus-fonce">
+        <div class="conteneur-principal">
+            <h2 class="titre-de-section alignement-centre">Autres missions</h2>
+
+            <div class="grille-trois-cartes-centree">
+                <div class="carte-info-standard">
+                    <div class="icone-carte-grande"><i class="fa-brands fa-windows"></i></div>
+                    <h3>Installation de systèmes</h3>
+                    <p>Installation de Windows à partir d'une clé USB préparée avec Rufus, puis configuration des
+                        postes.</p>
+                </div>
+                <div class="carte-info-standard">
+                    <div class="icone-carte-grande"><i class="fa-solid fa-desktop"></i></div>
+                    <h3>Montage de postes</h3>
+                    <p>Assemblage et mise en service de postes de travail chez des entreprises clientes.</p>
+                </div>
+                <div class="carte-info-standard">
+                    <div class="icone-carte-grande"><i class="fa-solid fa-hard-drive"></i></div>
+                    <h3>Sauvegarde sur NAS</h3>
+                    <p>Découverte des NAS, qui stockent les sauvegardes des serveurs et des PC des clients.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bilan -->
+    <section class="section-generale">
+        <div class="conteneur-principal">
+            <div class="bloc-realisations-cles">
+                <h3>Ce que j'en retiens</h3>
+                <p>
+                    Ce premier stage m'a appris l'importance de la préparation : tout configurer à l'atelier a rendu
+                    l'intervention sur site rapide et propre. J'y ai aussi découvert la rigueur qu'exige une
+                    installation réseau, même simple en apparence, et le travail directement chez le client.
+                </p>
+                <div class="liste-etiquettes etiquettes-centrees">
+                    <span class="etiquette">Préparation</span>
+                    <span class="etiquette">Diagnostic</span>
+                    <span class="etiquette">Intervention sur site</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pied de page et contact -->
+    <footer id="pied-de-page-contact" class="section-generale fond-plus-fonce style-pied-de-page">
+        <div class="conteneur-principal alignement-centre">
+            <h2 class="titre-de-section">Contact</h2>
+
+            <div class="liens-contact-boutons">
+                <a href="mailto:quentinblt77@gmail.com" class="badge-contact-primaire"><i class="fa-regular fa-envelope"></i> quentinblt77@gmail.com</a>
+                <a href="tel:+33769814335" class="badge-contact-secondaire"><i class="fa-solid fa-phone"></i> 07 69 81 43 35</a>
+            </div>
+
+            <div class="liens-documents-telechargement">
+                <a href="../index.html#section-realisations" class="lien-simple">Tous les projets</a>
+                <a href="../assets/files/CV-Quentin-THEPOT.pdf" target="_blank" rel="noopener" class="lien-simple">Télécharger mon CV</a>
+            </div>
+
+            <p class="texte-copyright">© 2026 Quentin THEPOT</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

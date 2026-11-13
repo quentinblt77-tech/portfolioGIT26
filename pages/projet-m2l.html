@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self'; base-uri 'self'; form-action 'none'">
+    <title>Projet M2L — Quentin THEPOT</title>
+    <meta name="description" content="Projet BTS SIO en équipe : infrastructure de la Maison des Ligues. Pare-feu pfSense et DMZ, serveurs web derrière HAProxy, VPN Tailscale et SIEM Wazuh.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Projet M2L — Quentin THEPOT">
+    <meta property="og:description" content="Infrastructure de la Maison des Ligues : pare-feu pfSense et DMZ, serveurs web derrière HAProxy, VPN Tailscale et SIEM Wazuh.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <script src="../js/script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Barre de Navigation Supérieure ("Menu") -->
+    <nav class="barre-navigation-fixe">
+        <div class="conteneur-navigation">
+            <a href="../index.html" class="marque-nav">Quentin THEPOT<span>BTS SIO · SISR</span></a>
+            <div class="groupe-liens-nav">
+                <a href="../index.html#section-presentation-profil" class="lien-nav">Présentation</a>
+                <a href="../index.html#section-bts-sio-explications" class="lien-nav">BTS SIO</a>
+                <a href="../index.html#section-parcours-scolaire" class="lien-nav">Parcours</a>
+                <a href="../index.html#section-objectifs-professionnels" class="lien-nav">Objectifs</a>
+                <a href="../index.html#section-experiences-professionnelles" class="lien-nav">Expériences</a>
+                <a href="../index.html#section-competences-techniques" class="lien-nav">Compétences</a>
+                <a href="../index.html#section-realisations" class="lien-nav lien-nav-actif">Projets</a>
+                <a href="veille.html" class="lien-nav">Veille</a>
+                <a href="../index.html#section-documents" class="lien-nav">Documents</a>
+                <a href="#pied-de-page-contact" class="lien-nav">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Bannière de la page -->
+    <header class="banniere-principale-entete banniere-page-interne">
+        <div class="conteneur-principal">
+            <div class="grille-banniere-contenu">
+                <div class="bloc-texte-infos">
+                    <a href="../index.html#section-realisations" class="fil-ariane">← Retour aux projets</a>
+                    <span class="badge-choix">Projet en cours</span>
+                    <h1>Projet M2L</h1>
+                    <p class="sous-titre-banniere">Atelier de professionnalisation · BTS SIO 2e année · En équipe ·
+                        Septembre 2026 – mai 2027</p>
+                    <div class="liste-etiquettes">
+                        <span class="etiquette">pfSense</span>
+                        <span class="etiquette">DMZ</span>
+                        <span class="etiquette">HAProxy</span>
+                        <span class="etiquette">WordPress</span>
+                        <span class="etiquette">VPN Tailscale</span>
+                        <span class="etiquette">Wazuh</span>
+                        <span class="etiquette">Trello</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contexte -->
+    <section class="section-generale">
+        <div class="conteneur-principal">
+            <h2 class="titre-de-section alignement-centre">Contexte</h2>
+            <p class="paragraphe-intro-section alignement-centre">
+                La Maison des Ligues (M2L) accueille des ligues sportives et leur loue une infrastructure informatique,
+                qu'elle administre pour elles. Le cahier des charges décrit un site de 4 bâtiments sur le domaine
+                M2L.local, séparé en deux pôles pour la sécurité et l'administration : le réseau de la M2L (annuaire,
+                serveurs, supervision) et les sous-réseaux des ligues, avec un VLAN par ligue.
+            </p>
+
+            <div class="grille-trois-cartes-centree">
+                <div class="carte-info-standard">
+                    <p class="valeur-chiffre">172.16.0.0/16</p>
+                    <p class="libelle-chiffre">réseau général, découpé en sous-réseaux par service et par ligue</p>
+                </div>
+                <div class="carte-info-standard">
+                    <p class="valeur-chiffre">32 ligues</p>
+                    <p class="libelle-chiffre">capacité prévue, chacune dans son VLAN et son /24</p>
+                </div>
+                <div class="carte-info-standard">
+                    <p class="valeur-chiffre">2 DMZ</p>
+                    <p class="libelle-chiffre">une publique (HAProxy, FTP) et une privée (web, bases de données)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture cible -->
+    <section class="section-generale fond-plus-fonce">
+        <div class="conteneur-principal">
+            <h2 class="titre-de-section alignement-centre">Architecture cible</h2>
+
+            <figure class="figure-schema">
+                <img src="../assets/img/m2l-schema-cible.png" width="866" height="737" loading="lazy"
+                    alt="Schéma réseau de la M2L : zone des ligues, zone informatique, pare-feu pfSense principal, DMZ publique et DMZ privée">
+                <figcaption>Schéma de l'infrastructure cible, fourni dans le cahier des charges du projet.</figcaption>
+            </figure>
+
+            <div class="grille-trois-cartes-centree">
+                <div class="carte-info-standard">
+                    <div class="icone-carte-grande"><i class="fa-solid fa-network-wired"></i></div>
+                    <h3>Réseau</h3>
+                    <p>Un VLAN par service et par ligue, routage par sous-interfaces 802.1Q, redondance des routeurs
+                        avec HSRP et des commutateurs avec le spanning-tree.</p>
+                </div>
+                <div class="carte-info-standard">
+                    <div class="icone-carte-grande"><i class="fa-solid fa-server"></i></div>
+                    <h3>Services</h3>
+                    <p>Active Directory, DNS et DHCP redondés, GLPI, Zabbix, Nextcloud, téléphonie Asterisk, serveurs
+                        web, bases de données et sauvegarde.</p>
+                </div>
+                <div class="carte-info-standard">
+                    <div class="icone-carte-grande"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3>Sécurité</h3>
+                    <p>Pare-feu pfSense avec l'IDS Snort, DMZ publique et privée, détection des menaces par Wazuh et
+                        administration des équipements en SSH.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ma partie -->
+    <section class="section-generale">
+        <div class="conteneur-principal">
+            <h2 class="titre-de-section alignement-centre">Ma partie du projet</h2>
+            <p class="paragraphe-intro-section alignement-centre">
+                Dans l'équipe, je prends en charge la sécurité du périmètre et l'hébergement des sites web.
+            </p>
+
+            <div class="mise-en-page-projet-split">
+                <ul class="liste-etapes-projet">
+                    <li class="item-etape-projet">
+                        <h3>Pare-feu pfSense principal</h3>
+                        <p>Le périmètre de sécurité entre le réseau interne, la DMZ publique et Internet, avec les
+                            règles de filtrage du cahier des charges.</p>
+                    </li>
+                    <li class="item-etape-projet">
+                        <h3>DMZ privée</h3>
+                        <p>Un second pare-feu pfSense qui isole les serveurs web, les bases de données et la
+                            sauvegarde.</p>
+                    </li>
+                    <li class="item-etape-projet">
+                        <h3>Serveurs WEB1 et WEB2</h3>
+                        <p>Deux serveurs WordPress en DMZ privée, pour le site vitrine de la M2L et les sites des
+                            ligues.</p>
+                    </li>
+                </ul>
+                <ul class="liste-etapes-projet">
+                    <li class="item-etape-projet">
+                        <h3>HAProxy</h3>
+                        <p>En DMZ publique, il reçoit les visiteurs et répartit les requêtes entre WEB1 et WEB2 : si
+                            un serveur tombe, l'autre prend le relais.</p>
+                    </li>
+                    <li class="item-etape-projet">
+                        <h3>VPN Tailscale</h3>
+                        <p>Un accès distant sécurisé à l'infrastructure pour l'administration.</p>
+                    </li>
+                    <li class="item-etape-projet">
+                        <h3>SIEM Wazuh</h3>
+                        <p>La collecte des journaux et la détection des menaces sur les serveurs clés.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Organisation -->
+    <section class="section-generale fond-plus-fonce">
+        <div class="conteneur-principal">
+            <h2 class="titre-de-section alignement-centre">Organisation du projet</h2>
+
+            <div class="grille-trois-cartes-centree">
+                <div class="carte-info-standard">
+                    <div class="icone-carte-grande"><i class="fa-solid fa-people-group"></i></div>
+                    <h3>Mode projet</h3>
+                    <p>Une équipe de 3 à 4 étudiants en autonomie, un chef d'équipe différent chaque semaine et un
+                        suivi des tâches sur Trello.</p>
+                </div>
+                <div class="carte-info-standard">
+                    <div class="icone-carte-grande"><i class="fa-solid fa-calendar-check"></i></div>
+                    <h3>Suivi hebdomadaire</h3>
+                    <p>Chaque semaine, une auto-évaluation (travail réalisé, difficultés, solutions, compétences
+                        acquises) et une présentation de 5 à 10 minutes au professeur référent.</p>
+                </div>
+                <div class="carte-info-standard">
+                    <div class="icone-carte-grande"><i class="fa-solid fa-file-lines"></i></div>
+                    <h3>Livrables</h3>
+                    <p>Une documentation technique et une procédure de tests pour chaque service mis en place,
+                        déposées sur Teams.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compétences visées -->
+    <section class="section-generale">
+        <div class="conteneur-principal">
+            <h2 class="titre-de-section alignement-centre">Compétences visées</h2>
+            <p class="paragraphe-intro-section alignement-centre">
+                Les compétences du bloc 2 de l'option SISR couvertes par le projet.
+            </p>
+
+            <div class="grille-trois-cartes-centree">
+                <div class="carte-info-standard">
+                    <h3>Concevoir</h3>
+                    <ul class="liste-puces">
+                        <li>Analyser un besoin et son contexte</li>
+                        <li>Choisir une solution et rédiger ses spécifications</li>
+                        <li>Assurer la qualité et la disponibilité d'un service</li>
+                        <li>Maquetter et préparer les tests de validation</li>
+                    </ul>
+                </div>
+                <div class="carte-info-standard">
+                    <h3>Installer et déployer</h3>
+                    <ul class="liste-puces">
+                        <li>Installer et configurer l'infrastructure</li>
+                        <li>Assurer la continuité et la qualité de service</li>
+                        <li>Rédiger la documentation technique</li>
+                        <li>Tester l'intégration et déployer</li>
+                    </ul>
+                </div>
+                <div class="carte-info-standard">
+                    <h3>Exploiter et superviser</h3>
+                    <ul class="liste-puces">
+                        <li>Administrer sur site et à distance</li>
+                        <li>Exploiter les journaux et les indicateurs</li>
+                        <li>Réagir face à un incident</li>
+                        <li>Maintenir et améliorer la qualité de service</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pied de page et contact -->
+    <footer id="pied-de-page-contact" class="section-generale fond-plus-fonce style-pied-de-page">
+        <div class="conteneur-principal alignement-centre">
+            <h2 class="titre-de-section">Contact</h2>
+
+            <div class="liens-contact-boutons">
+                <a href="mailto:quentinblt77@gmail.com" class="badge-contact-primaire"><i class="fa-regular fa-envelope"></i> quentinblt77@gmail.com</a>
+                <a href="tel:+33769814335" class="badge-contact-secondaire"><i class="fa-solid fa-phone"></i> 07 69 81 43 35</a>
+            </div>
+
+            <div class="liens-documents-telechargement">
+                <a href="../index.html#section-realisations" class="lien-simple">Tous les projets</a>
+                <a href="../assets/files/CV-Quentin-THEPOT.pdf" target="_blank" rel="noopener" class="lien-simple">Télécharger mon CV</a>
+            </div>
+
+            <p class="texte-copyright">© 2026 Quentin THEPOT</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

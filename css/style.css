@@ -1,0 +1,2285 @@
+/* Mon Portfolio - Quentin THEPOT */
+
+/* Couleurs et polices */
+:root {
+  --fond: #0A0A0B;
+  --fond-alterne: #111113;
+  --carte: #161618;
+  --carte-survol: #1B1B1E;
+  --bordure: #26262A;
+  --bordure-forte: #3C3C42;
+  --texte: #F2F2F3;
+  --texte-secondaire: #A3A3AB;
+  --texte-discret: #8A8A93;
+  --vert-dispo: #34C759;
+
+  /* Couleur d'accent : bleu inspiré du logo Saint-Aspais, éclairci pour le fond noir */
+  --accent: #6EA8FE;
+  --accent-discret: rgba(110, 168, 254, 0.35);
+
+  --police: "IBM Plex Sans", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --police-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+
+  --rayon: 10px;
+  --hauteur-nav: 64px;
+}
+
+/* Reset de base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--hauteur-nav) + 24px);
+}
+
+body {
+  font-family: var(--police);
+  background-color: var(--fond);
+  color: var(--texte);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--texte);
+  color: var(--fond);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--texte);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+code {
+  font-family: var(--police-mono);
+  font-size: 0.85em;
+  color: var(--texte);
+  background: var(--fond);
+  border: 1px solid var(--bordure);
+  border-radius: 4px;
+  padding: 1px 5px;
+}
+
+/* Classes utilitaires */
+.conteneur-principal {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-generale {
+  padding: 110px 20px;
+  border-top: 1px solid var(--bordure);
+}
+
+.fond-plus-fonce {
+  background-color: var(--fond-alterne);
+}
+
+.alignement-centre {
+  text-align: center;
+}
+
+/* Petit repère numéroté au-dessus des titres de section */
+.surtitre {
+  display: block;
+  font-family: var(--police-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+
+.titre-de-section {
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  font-weight: 600;
+  line-height: 1.15;
+  margin-bottom: 1.75rem;
+  color: var(--texte);
+  letter-spacing: -0.025em;
+}
+
+.paragraphe-intro-section {
+  max-width: 680px;
+  margin: 0 auto 3.5rem auto;
+  color: var(--texte-secondaire);
+  font-size: 1.08rem;
+}
+
+.marge-basse-4 {
+  margin-bottom: 2rem;
+}
+
+/* Boutons */
+.bouton-primaire,
+.bouton-secondaire,
+.bouton-contour {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.bouton-primaire {
+  background-color: var(--texte);
+  color: var(--fond);
+  border: 1px solid var(--texte);
+}
+
+.bouton-primaire:hover {
+  background-color: #D6D6D9;
+  border-color: #D6D6D9;
+}
+
+.bouton-secondaire,
+.bouton-contour {
+  background-color: transparent;
+  color: var(--texte);
+  border: 1px solid var(--bordure-forte);
+}
+
+.bouton-secondaire:hover,
+.bouton-contour:hover {
+  border-color: var(--texte);
+}
+
+/* Menu Navigation Fixe */
+.barre-navigation-fixe {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgba(10, 10, 11, 0.82);
+  -webkit-backdrop-filter: saturate(140%) blur(12px);
+  backdrop-filter: saturate(140%) blur(12px);
+  border-bottom: 1px solid var(--bordure);
+}
+
+.conteneur-navigation {
+  max-width: 1240px;
+  height: var(--hauteur-nav);
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.marque-nav {
+  flex-shrink: 0;
+  font-weight: 600;
+  font-size: 0.98rem;
+  letter-spacing: -0.01em;
+  color: var(--texte);
+}
+
+.marque-nav span {
+  font-family: var(--police-mono);
+  font-weight: 400;
+  font-size: 0.78rem;
+  color: var(--texte-discret);
+  margin-left: 8px;
+}
+
+.groupe-liens-nav {
+  display: flex;
+  gap: 2px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.groupe-liens-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.lien-nav {
+  color: var(--texte-secondaire);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 7px 11px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.lien-nav:hover {
+  color: var(--texte);
+}
+
+.lien-nav-actif {
+  color: var(--accent);
+  background-color: rgba(110, 168, 254, 0.12);
+}
+
+/* Header / Bannière */
+.banniere-principale-entete {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--fond);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 56px 56px;
+  background-position: center top;
+  padding: calc(var(--hauteur-nav) + 60px) 20px 80px;
+}
+
+.grille-banniere-contenu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 64px;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.bloc-texte-infos {
+  flex: 1;
+  text-align: left;
+}
+
+.bloc-texte-infos h1 {
+  font-size: clamp(2.8rem, 7vw, 4.8rem);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  margin-bottom: 1.4rem;
+  color: var(--texte);
+}
+
+.sous-titre-banniere {
+  font-size: 1.2rem;
+  color: var(--texte-secondaire);
+  max-width: 560px;
+  margin-bottom: 2.25rem;
+}
+
+.boutons-actions-banniere {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.statut-dispo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 2.25rem;
+  font-family: var(--police-mono);
+  font-size: 0.8rem;
+  color: var(--texte-secondaire);
+}
+
+.point-statut {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--vert-dispo);
+  box-shadow: 0 0 0 3px rgba(52, 199, 89, 0.18);
+}
+
+.bloc-logo-droite {
+  flex: 0 0 360px;
+}
+
+.bloc-logo-droite img {
+  border-radius: var(--rayon);
+  border: 1px solid var(--bordure);
+}
+
+/* Section Présentation */
+.grille-deux-colonnes-presentation {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 64px;
+  align-items: start;
+  margin-bottom: 56px;
+}
+
+.bloc-texte-presentation .titre-de-section {
+  margin-bottom: 1.5rem;
+}
+
+.liste-infos-perso {
+  border-top: 1px solid var(--bordure);
+}
+
+.liste-infos-perso li {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--bordure);
+  font-size: 1rem;
+  color: var(--texte);
+}
+
+.liste-infos-perso li span {
+  font-family: var(--police-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--texte-discret);
+  padding-top: 3px;
+}
+
+.liste-infos-perso strong {
+  color: var(--texte);
+}
+
+/* Tableau d'infos sous la photo et le texte : 2 × 2 sur toute la largeur */
+.tableau-infos-largeur {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 48px;
+  text-align: left;
+}
+
+.tableau-infos-largeur li {
+  grid-template-columns: 140px 1fr;
+}
+
+@media (max-width: 768px) {
+  .tableau-infos-largeur {
+    grid-template-columns: 1fr;
+  }
+
+  .tableau-infos-largeur li {
+    grid-template-columns: 110px 1fr;
+  }
+}
+
+.image-profil-ronde {
+  width: 100%;
+  max-width: 280px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--rayon);
+  border: 1px solid var(--bordure);
+  margin: 0 auto;
+}
+
+/* Cartes (Compétences, Objectifs) */
+.grille-quatre-colonnes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.grille-trois-cartes-centree {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.carte-info-standard,
+.carte-info-centre {
+  background-color: var(--carte);
+  padding: 28px;
+  border-radius: var(--rayon);
+  border: 1px solid var(--bordure);
+  text-align: left;
+  transition: border-color 0.2s ease;
+}
+
+.carte-info-standard:hover,
+.carte-info-centre:hover {
+  border-color: var(--bordure-forte);
+}
+
+.carte-info-standard h3,
+.carte-info-centre h3 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--texte);
+  letter-spacing: -0.01em;
+}
+
+.carte-info-standard h3 i {
+  color: var(--texte-discret);
+  margin-right: 6px;
+}
+
+.carte-info-standard p,
+.carte-info-centre p {
+  color: var(--texte-secondaire);
+  font-size: 0.94rem;
+}
+
+.icone-carte-grande {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--bordure-forte);
+  border-radius: 8px;
+  font-size: 1.05rem;
+  color: var(--texte);
+  margin-bottom: 22px;
+}
+
+.separateur-bts {
+  border: none;
+  border-top: 1px solid var(--bordure);
+  margin: 18px 0;
+}
+
+.conteneur-lien-document {
+  margin-top: 48px;
+}
+
+/* Frise Chrono (Expériences) */
+.frise-chronologique-standard {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  padding-left: 20px;
+}
+
+.frise-chronologique-standard::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: var(--bordure-forte);
+}
+
+.element-frise-standard {
+  position: relative;
+  margin-bottom: 44px;
+  padding-left: 32px;
+}
+
+.element-frise-standard:last-child {
+  margin-bottom: 0;
+}
+
+.marqueur-temporel {
+  position: absolute;
+  left: -25px;
+  top: 7px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--fond-alterne);
+  border: 2px solid var(--texte);
+}
+
+.element-frise-standard:first-child .marqueur-temporel {
+  background: var(--texte);
+}
+
+.date-evenement {
+  display: block;
+  font-family: var(--police-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--texte-discret);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.contenu-frise-standard h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--texte);
+}
+
+.contenu-frise-standard p {
+  color: var(--texte-secondaire);
+  max-width: 680px;
+}
+
+/* Options BTS */
+.blocs-options-bts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 360px));
+  justify-content: center;
+  gap: 16px;
+  margin: 40px 0;
+}
+
+.carte-option-bts {
+  background-color: var(--carte);
+  border: 1px solid var(--bordure);
+  padding: 32px 28px;
+  border-radius: var(--rayon);
+  text-align: center;
+  position: relative;
+}
+
+.carte-option-active {
+  border-color: var(--texte);
+}
+
+.badge-choix {
+  display: inline-block;
+  background-color: var(--texte);
+  color: var(--fond);
+  font-family: var(--police-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.carte-option-bts .badge-choix {
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+}
+
+.carte-option-bts h3 {
+  font-size: 1.7rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+  color: var(--texte);
+}
+
+.carte-option-bts p {
+  color: var(--texte-secondaire);
+}
+
+/* Parcours Scolaire */
+.frise-chronologique-education {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.frise-chronologique-education::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 16px;
+  bottom: 16px;
+  width: 1px;
+  background: var(--bordure-forte);
+}
+
+.element-frise-chrono {
+  position: relative;
+  margin-bottom: 40px;
+  padding-left: 48px;
+}
+
+.numero-etape-cercle {
+  position: absolute;
+  left: -16px;
+  top: 0;
+  width: 32px;
+  height: 32px;
+  background-color: var(--fond);
+  border: 1px solid var(--bordure-forte);
+  color: var(--texte);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--police-mono);
+  font-size: 0.8rem;
+  z-index: 2;
+}
+
+.element-frise-chrono:first-child .numero-etape-cercle {
+  background-color: var(--texte);
+  border-color: var(--texte);
+  color: var(--fond);
+}
+
+.contenu-etape-chrono h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--texte);
+  margin-bottom: 4px;
+}
+
+.contenu-etape-chrono p {
+  color: var(--texte-secondaire);
+}
+
+.contenu-etape-chrono strong {
+  font-weight: 500;
+  color: #D4D4D8;
+}
+
+/* Projet */
+.mise-en-page-projet-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+  margin-bottom: 40px;
+}
+
+.item-etape-projet {
+  position: relative;
+  padding-left: 28px;
+  padding-bottom: 22px;
+  border-left: 1px solid var(--bordure-forte);
+}
+
+.item-etape-projet:last-child {
+  padding-bottom: 0;
+}
+
+.item-etape-projet::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 7px;
+  width: 9px;
+  height: 9px;
+  background-color: var(--texte);
+  border-radius: 50%;
+}
+
+.item-etape-projet h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: var(--texte);
+}
+
+.item-etape-projet p {
+  color: var(--texte-secondaire);
+  margin: 0;
+}
+
+.bloc-image-projet-droite img {
+  border-radius: var(--rayon);
+  border: 1px solid var(--bordure);
+}
+
+.bloc-realisations-cles {
+  background-color: var(--carte);
+  padding: 36px;
+  border-radius: var(--rayon);
+  border: 1px solid var(--bordure);
+  text-align: center;
+}
+
+.bloc-realisations-cles h3 {
+  font-weight: 600;
+  margin-bottom: 14px;
+  color: var(--texte);
+}
+
+.bloc-realisations-cles p {
+  color: var(--texte-secondaire);
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+/* PDF Grid */
+.grille-fichiers-pdf {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 40px;
+}
+
+/* Contact */
+.badge-contact-primaire,
+.badge-contact-secondaire {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 24px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.badge-contact-primaire {
+  background-color: var(--texte);
+  color: var(--fond);
+  border: 1px solid var(--texte);
+}
+
+a.badge-contact-primaire:hover {
+  background-color: #D6D6D9;
+}
+
+.badge-contact-secondaire {
+  background-color: transparent;
+  color: var(--texte);
+  border: 1px solid var(--bordure-forte);
+}
+
+a.badge-contact-secondaire:hover {
+  border-color: var(--texte);
+}
+
+.liens-contact-boutons,
+.liens-documents-telechargement {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.liens-documents-telechargement {
+  gap: 28px;
+}
+
+.lien-simple {
+  color: var(--texte-secondaire);
+  font-weight: 500;
+  border-bottom: 1px solid var(--bordure-forte);
+  padding-bottom: 2px;
+}
+
+.lien-simple:hover {
+  color: var(--texte);
+  border-bottom-color: var(--texte);
+}
+
+.texte-copyright {
+  font-family: var(--police-mono);
+  color: var(--texte-discret);
+  font-size: 0.8rem;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .grille-quatre-colonnes {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .grille-trois-cartes-centree {
+    grid-template-columns: 1fr;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .grille-banniere-contenu {
+    flex-direction: column;
+    text-align: center;
+    gap: 48px;
+  }
+
+  .bloc-texte-infos {
+    text-align: center;
+  }
+
+  .sous-titre-banniere {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .boutons-actions-banniere {
+    justify-content: center;
+  }
+
+  .bloc-logo-droite {
+    flex: none;
+    width: 60%;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+
+  .marque-nav span {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .grille-deux-colonnes-presentation {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .image-profil-ronde {
+    max-width: 220px;
+  }
+
+  .bloc-texte-presentation .titre-de-section {
+    text-align: center;
+  }
+
+  .liste-infos-perso li {
+    grid-template-columns: 110px 1fr;
+  }
+
+  .section-generale {
+    padding: 72px 20px;
+  }
+
+  .conteneur-navigation {
+    padding: 0 16px;
+    gap: 16px;
+  }
+
+  .marque-nav {
+    display: none;
+  }
+
+  .groupe-liens-nav {
+    width: 100%;
+  }
+
+  .blocs-options-bts {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .mise-en-page-projet-split {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .grille-quatre-colonnes {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== Ajouts 2e année ===== */
+
+/* Bannière des pages internes (projets, stage, veille) */
+.banniere-page-interne {
+  min-height: 56vh;
+}
+
+.banniere-page-interne .bloc-texte-infos h1 {
+  font-size: clamp(2.3rem, 5.5vw, 3.6rem);
+}
+
+.fil-ariane {
+  display: block;
+  width: fit-content;
+  font-family: var(--police-mono);
+  color: var(--texte-discret);
+  font-size: 0.82rem;
+  margin-bottom: 1.5rem;
+}
+
+.fil-ariane:hover {
+  color: var(--texte);
+}
+
+/* Étiquettes (technos, compétences) */
+.liste-etiquettes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.bloc-texte-infos .liste-etiquettes {
+  margin-bottom: 0;
+}
+
+.etiquette {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--bordure-forte);
+  color: var(--texte-secondaire);
+  font-family: var(--police-mono);
+  font-size: 0.75rem;
+}
+
+/* Cartes projets cliquables */
+.grille-cartes-projets {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.carte-projet-lien {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--carte);
+  padding: 28px;
+  border-radius: var(--rayon);
+  border: 1px solid var(--bordure);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.carte-projet-lien:hover {
+  border-color: var(--bordure-forte);
+  background-color: var(--carte-survol);
+}
+
+.carte-projet-lien h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin-bottom: 10px;
+  color: var(--texte);
+}
+
+.carte-projet-lien p {
+  color: var(--texte-secondaire);
+  font-size: 0.95rem;
+}
+
+.carte-projet-lien .badge-choix {
+  align-self: flex-start;
+  background: transparent;
+  color: var(--texte-secondaire);
+  border: 1px solid var(--bordure-forte);
+}
+
+.lien-en-savoir-plus {
+  margin-top: auto;
+  padding-top: 24px;
+  color: var(--texte);
+  font-weight: 500;
+  font-size: 0.92rem;
+}
+
+.lien-en-savoir-plus::after {
+  content: '→';
+  display: inline-block;
+  margin-left: 6px;
+  transition: transform 0.2s ease;
+}
+
+.carte-projet-lien:hover .lien-en-savoir-plus::after {
+  transform: translateX(4px);
+}
+
+/* Lien "voir le détail" dans la frise des expériences */
+
+/* Emplacement pour un document pas encore publié */
+
+/* Tableau de synthèse E5 */
+.conteneur-tableau-defilant {
+  overflow-x: auto;
+  border: 1px solid var(--bordure);
+  border-radius: var(--rayon);
+  background: var(--fond);
+}
+
+.tableau-synthese {
+  width: 100%;
+  min-width: 900px;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.tableau-synthese th,
+.tableau-synthese td {
+  padding: 14px 14px;
+  border-bottom: 1px solid var(--bordure);
+  vertical-align: top;
+}
+
+.tableau-synthese tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.tableau-synthese tbody tr:hover td {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.tableau-synthese th:first-child,
+.tableau-synthese td:first-child {
+  min-width: 320px;
+}
+
+.tableau-synthese thead th {
+  background-color: var(--carte);
+  color: var(--texte-secondaire);
+  font-weight: 500;
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
+.tableau-synthese td {
+  color: var(--texte-secondaire);
+}
+
+.tableau-synthese td strong {
+  color: var(--texte);
+  font-weight: 500;
+}
+
+/* Le "X" du tableau devient un petit carré plein (le X reste lu par les lecteurs d'écran) */
+
+.legende-tableau {
+  font-family: var(--police-mono);
+  color: var(--texte-discret);
+  font-size: 0.78rem;
+  margin-top: 14px;
+}
+
+/* Apparition douce au défilement (seulement si le JavaScript est actif) */
+.js-actif .apparition {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.js-actif .apparition.visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@media (max-width: 992px) {
+  .fil-ariane {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .bloc-texte-infos .liste-etiquettes {
+    justify-content: center;
+  }
+}
+
+/* Pied de page */
+.style-pied-de-page .marge-basse-4 {
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--texte-secondaire);
+}
+
+@media (max-width: 768px) {
+  .statut-dispo {
+    white-space: nowrap;
+    font-size: 0.72rem;
+  }
+
+  .bloc-texte-presentation .surtitre {
+    text-align: center;
+  }
+}
+
+/* ===== Organisation 2026 ===== */
+
+/* Bannière d'accueil : nom, sous-titre et logo du campus (comme la version 1re année) */
+.banniere-accueil .conteneur-principal {
+  max-width: 1240px;
+}
+
+.banniere-accueil .grille-banniere-contenu {
+  max-width: none;
+  gap: 56px;
+}
+
+.banniere-accueil .bloc-texte-infos h1 {
+  font-size: clamp(2.8rem, 6vw, 4.6rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.banniere-accueil .sous-titre-banniere {
+  font-size: clamp(1.2rem, 1.9vw, 1.5rem);
+  max-width: none;
+  margin-bottom: 2.5rem;
+}
+
+.bloc-logo-droite {
+  display: block;
+  flex: 0 0 440px;
+}
+
+.bloc-logo-droite img {
+  display: block;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid var(--bordure);
+  border-radius: 20px;
+}
+
+@media (max-width: 600px) {
+  .banniere-accueil .sous-titre-banniere {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .bloc-logo-droite {
+    flex: none;
+    width: 70%;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+}
+
+/* Chiffres clés (pages internes) */
+
+.valeur-chiffre {
+  font-size: 2.3rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--texte);
+}
+
+.libelle-chiffre {
+  margin-top: 8px;
+  font-family: var(--police-mono);
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--texte-secondaire);
+}
+
+/* À propos */
+.texte-presentation {
+  color: var(--texte-secondaire);
+  font-size: 1.05rem;
+  margin-bottom: 28px;
+}
+
+.texte-presentation p + p {
+  margin-top: 14px;
+}
+
+/* Expériences */
+.role-experience {
+  color: var(--texte) !important;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.periodes-stage {
+  margin-top: 14px;
+  border-left: 1px solid var(--bordure);
+}
+
+.periodes-stage li {
+  padding: 0 0 16px 18px;
+}
+
+.periodes-stage li:last-child {
+  padding-bottom: 0;
+}
+
+.date-periode {
+  display: block;
+  font-family: var(--police-mono);
+  font-size: 0.75rem;
+  color: var(--texte-discret);
+  margin-bottom: 2px;
+}
+
+.periodes-stage p {
+  color: var(--texte-secondaire);
+}
+
+/* BTS SIO */
+#section-bts-sio-explications .conteneur-lien-document {
+  margin-top: 36px;
+}
+
+#section-bts-sio-explications .blocs-options-bts {
+  margin: 36px 0 24px;
+}
+
+.carte-option-active {
+  border-color: var(--accent);
+}
+
+/* ===== Sections compactes : chacune tient sur un écran d'ordinateur ===== */
+#section-bts-sio-explications,
+#section-parcours-scolaire,
+#section-competences-techniques,
+#section-realisations {
+  padding-top: 88px;
+  padding-bottom: 56px;
+}
+
+#section-bts-sio-explications .titre-de-section,
+#section-parcours-scolaire .titre-de-section,
+#section-competences-techniques .titre-de-section,
+#section-realisations .titre-de-section {
+  margin-bottom: 0.75rem;
+}
+
+#section-bts-sio-explications .paragraphe-intro-section,
+#section-parcours-scolaire .paragraphe-intro-section,
+#section-competences-techniques .paragraphe-intro-section,
+#section-realisations .paragraphe-intro-section {
+  margin-bottom: 2rem;
+}
+
+/* BTS SIO */
+#section-bts-sio-explications .blocs-options-bts {
+  margin: 0 0 20px;
+}
+
+#section-bts-sio-explications .carte-option-bts {
+  padding: 24px 24px 20px;
+}
+
+#section-bts-sio-explications .carte-option-bts h3 {
+  font-size: 1.5rem;
+}
+
+#section-bts-sio-explications .separateur-bts {
+  margin: 12px 0;
+}
+
+/* Parcours */
+#section-parcours-scolaire .grille-formation {
+  margin-top: 0;
+}
+
+#section-parcours-scolaire .paragraphe-intro-section {
+  max-width: 900px;
+}
+
+#section-parcours-scolaire .element-frise-chrono {
+  margin-bottom: 22px;
+}
+
+#section-parcours-scolaire .element-frise-chrono:last-child {
+  margin-bottom: 0;
+}
+
+#section-parcours-scolaire .contenu-etape-chrono h3 {
+  font-size: 1.08rem;
+}
+
+/* Étape en cours (BTS) en blanc, à la place de la première */
+#section-parcours-scolaire .element-frise-chrono:first-child .numero-etape-cercle {
+  background-color: var(--fond);
+  border-color: var(--bordure-forte);
+  color: var(--texte);
+}
+
+#section-parcours-scolaire .etape-en-cours .numero-etape-cercle {
+  background-color: var(--texte);
+  border-color: var(--texte);
+  color: var(--fond);
+}
+
+#section-parcours-scolaire .contenu-etape-chrono p {
+  font-size: 0.95rem;
+}
+
+/* Compétences : conteneur plus large, icône à côté du titre */
+#section-competences-techniques .conteneur-principal,
+#section-realisations .conteneur-principal {
+  max-width: 1240px;
+}
+
+#section-competences-techniques .grille-trois-cartes-centree {
+  margin-top: 0;
+}
+
+#section-competences-techniques .carte-info-standard {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  column-gap: 12px;
+  padding: 20px 22px;
+}
+
+#section-competences-techniques .icone-carte-grande {
+  width: 34px;
+  height: 34px;
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--accent);
+}
+
+#section-competences-techniques .carte-info-standard h3 {
+  margin: 0;
+}
+
+#section-competences-techniques .carte-info-standard .liste-etiquettes {
+  grid-column: 1 / -1;
+  margin-top: 14px;
+  gap: 6px;
+}
+
+/* Développement web : étiquettes empilées 3 par ligne */
+.etiquettes-trois-colonnes {
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+}
+
+/* Projets : cartes plus basses */
+#section-realisations .carte-projet-lien {
+  padding: 18px 20px;
+}
+
+#section-realisations .carte-projet-lien .badge-choix {
+  margin-bottom: 10px;
+}
+
+#section-realisations .carte-projet-lien h3 {
+  margin-bottom: 6px;
+}
+
+#section-realisations .carte-projet-lien p {
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+#section-realisations .liste-etiquettes {
+  margin-top: 10px;
+  gap: 6px;
+}
+
+/* « Voir le détail » remplacé par une flèche en haut à droite de la carte */
+#section-realisations .carte-projet-lien {
+  position: relative;
+}
+
+#section-realisations .lien-en-savoir-plus {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  padding: 0;
+  font-size: 0;
+}
+
+#section-realisations .lien-en-savoir-plus::after {
+  font-size: 1rem;
+  margin: 0;
+  color: var(--texte-discret);
+}
+
+#section-realisations .carte-projet-lien:hover .lien-en-savoir-plus::after {
+  color: var(--accent);
+}
+
+#section-realisations .etiquette {
+  padding: 2px 8px;
+  font-size: 0.7rem;
+}
+
+#section-realisations {
+  padding-top: 56px;
+  padding-bottom: 40px;
+}
+
+#section-realisations .conteneur-principal {
+  max-width: 1400px;
+}
+
+#section-realisations .paragraphe-intro-section {
+  max-width: none;
+  margin-bottom: 1.5rem;
+}
+
+#section-realisations .grille-cartes-projets + .titre-groupe {
+  margin-top: 18px;
+}
+
+#section-realisations .grille-cartes-projets + .titre-groupe {
+  margin-top: 24px;
+}
+
+#section-realisations .titre-groupe {
+  margin-bottom: 12px;
+}
+
+/* Parcours : bouton vers le site du campus sous les certifications */
+.bouton-campus {
+  margin-top: 16px;
+}
+
+/* Expériences : 2 colonnes pour tenir sur un écran
+   (VIASANTÉ à gauche, SDIS 77 et L'infopratique empilés à droite) */
+#section-experiences-professionnelles {
+  padding-top: 88px;
+  padding-bottom: 56px;
+}
+
+#section-experiences-professionnelles .titre-de-section {
+  margin-bottom: 0.75rem;
+}
+
+#section-experiences-professionnelles .paragraphe-intro-section {
+  margin-bottom: 2.5rem;
+}
+
+#section-experiences-professionnelles .frise-chronologique-standard {
+  max-width: 1100px;
+  padding-left: 0;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 32px 56px;
+  align-items: start;
+}
+
+#section-experiences-professionnelles .frise-chronologique-standard::before {
+  display: none;
+}
+
+#section-experiences-professionnelles .element-frise-standard {
+  margin-bottom: 0;
+  padding-left: 28px;
+  border-left: 1px solid var(--bordure-forte);
+}
+
+#section-experiences-professionnelles .element-frise-standard:first-child {
+  grid-row: span 2;
+}
+
+#section-experiences-professionnelles .marqueur-temporel {
+  left: -6px;
+}
+
+#section-experiences-professionnelles .contenu-frise-standard p {
+  font-size: 0.95rem;
+}
+
+/* Noms d'entreprises bien visibles */
+#section-experiences-professionnelles .contenu-frise-standard h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+}
+
+#section-experiences-professionnelles .element-frise-standard {
+  border-left-color: var(--accent-discret);
+}
+
+#section-experiences-professionnelles .marqueur-temporel {
+  border-color: var(--accent);
+}
+
+#section-experiences-professionnelles .marqueur-temporel,
+#section-experiences-professionnelles .element-frise-standard:first-child .marqueur-temporel {
+  background: var(--accent);
+}
+
+#section-experiences-professionnelles .periodes-stage {
+  border-left-color: var(--accent-discret);
+}
+
+#section-experiences-professionnelles .date-periode {
+  color: var(--texte-secondaire);
+}
+
+#section-experiences-professionnelles .periodes-stage li {
+  padding-bottom: 22px;
+}
+
+#section-experiences-professionnelles .periodes-stage li:last-child {
+  padding-bottom: 0;
+}
+
+#section-experiences-professionnelles .date-periode {
+  margin-bottom: 4px;
+}
+
+@media (max-width: 992px) {
+  #section-experiences-professionnelles .frise-chronologique-standard {
+    grid-template-columns: 1fr;
+    max-width: 680px;
+  }
+
+  #section-experiences-professionnelles .element-frise-standard:first-child {
+    grid-row: auto;
+  }
+}
+
+/* Titres de groupe (En entreprise, En formation, Certifications) */
+.titre-groupe {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--police-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--texte-secondaire);
+  margin: 0 0 18px;
+}
+
+.titre-groupe::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--bordure);
+}
+
+.grille-cartes-projets + .titre-groupe {
+  margin-top: 48px;
+}
+
+#section-realisations .grille-cartes-projets {
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 0;
+}
+
+#section-realisations .carte-projet-lien {
+  padding: 24px;
+}
+
+#section-realisations .carte-projet-lien h3 {
+  font-size: 1.12rem;
+}
+
+#section-realisations .carte-projet-lien p {
+  font-size: 0.92rem;
+}
+
+/* Formation et certifications */
+.grille-formation {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 56px;
+  align-items: start;
+  margin-top: 40px;
+}
+
+.grille-formation .frise-chronologique-education {
+  margin: 0;
+}
+
+.contenu-etape-chrono .date-evenement {
+  margin-bottom: 4px;
+}
+
+.carte-document {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  background: var(--carte);
+  border: 1px solid var(--bordure);
+  border-radius: var(--rayon);
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+.icone-document {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--bordure-forte);
+  border-radius: 8px;
+  color: var(--texte-secondaire);
+}
+
+.texte-document {
+  flex: 1;
+  min-width: 0;
+}
+
+.texte-document h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--texte);
+}
+
+.texte-document p {
+  font-size: 0.88rem;
+  color: var(--texte-secondaire);
+}
+
+.bouton-petit {
+  flex-shrink: 0;
+  padding: 8px 14px;
+  font-size: 0.85rem;
+}
+
+.grille-documents {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.grille-documents .carte-document {
+  margin-bottom: 0;
+}
+
+@media (max-width: 1100px) {
+  #section-realisations .grille-cartes-projets {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+
+  .grille-formation {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .grille-formation .frise-chronologique-education {
+    margin-left: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .bloc-texte-presentation .liste-infos-perso,
+  .texte-presentation {
+    text-align: left;
+  }
+}
+
+@media (max-width: 600px) {
+  #section-realisations .grille-cartes-projets {
+    grid-template-columns: 1fr;
+  }
+
+  .valeur-chiffre {
+    font-size: 1.9rem;
+  }
+}
+
+/* Tableaux courts (difficultés & solutions) */
+.tableau-court {
+  min-width: 600px;
+}
+
+.tableau-court th:first-child,
+.tableau-court td:first-child {
+  min-width: 170px;
+}
+
+.grille-documents-seule {
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Chiffres dans les cartes des pages détail */
+.carte-info-standard .valeur-chiffre {
+  font-size: 1.9rem;
+}
+
+/* Schéma réseau en pleine largeur */
+.figure-schema {
+  margin: 0 auto 40px;
+  max-width: 900px;
+}
+
+.figure-schema img {
+  width: 100%;
+  height: auto;
+  background: #FFFFFF;
+  border: 1px solid var(--bordure);
+  border-radius: var(--rayon);
+}
+
+.figure-schema figcaption {
+  margin-top: 12px;
+  text-align: center;
+  font-family: var(--police-mono);
+  font-size: 0.78rem;
+  color: var(--texte-discret);
+}
+
+/* Liste à puces carrées dans les cartes */
+.liste-puces li {
+  position: relative;
+  padding-left: 16px;
+  margin-bottom: 8px;
+  color: var(--texte-secondaire);
+  font-size: 0.94rem;
+}
+
+.liste-puces li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 6px;
+  height: 6px;
+  border-radius: 1px;
+  background: var(--texte-discret);
+}
+
+/* Menu : une couleur propre, distincte du fond de page */
+.barre-navigation-fixe {
+  background-color: rgba(24, 24, 27, 0.92);
+  border-bottom-color: var(--bordure-forte);
+}
+
+/* Résumé du BTS SIO */
+
+.grille-documents-accueil {
+  margin-top: 0;
+}
+
+/* ===== Dynamisme : animations, survols et repères de défilement ===== */
+
+:root {
+  --courbe: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* --- Apparition au défilement, plus ample et décalée dans les grilles --- */
+.js-actif .apparition {
+  transform: translateY(22px);
+  transition: opacity 0.7s var(--courbe), transform 0.7s var(--courbe);
+  will-change: opacity, transform;
+}
+
+/* Les repères des frises « poussent » juste après l'arrivée de leur bloc */
+.marqueur-temporel,
+.numero-etape-cercle,
+.item-etape-projet::before {
+  transition: transform 0.45s var(--courbe) 0.25s;
+}
+
+.js-actif .apparition:not(.visible) .marqueur-temporel,
+.js-actif .apparition:not(.visible) .numero-etape-cercle,
+.js-actif .apparition:not(.visible) .item-etape-projet::before {
+  transform: scale(0);
+}
+
+/* Le trait de la frise du parcours se dessine de haut en bas */
+.frise-a-tracer::before {
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 1.1s var(--courbe);
+}
+
+.frise-a-tracer.frise-tracee::before {
+  transform: scaleY(1);
+}
+
+/* --- Entrée de la bannière au chargement de la page --- */
+@keyframes entree-montante {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes entree-logo {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes descente-menu {
+  from {
+    transform: translateY(-100%);
+  }
+
+  to {
+    transform: none;
+  }
+}
+
+.js-actif .banniere-principale-entete .bloc-texte-infos > * {
+  animation: entree-montante 0.8s var(--courbe) backwards;
+}
+
+.js-actif .banniere-principale-entete .bloc-texte-infos > :nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.js-actif .banniere-principale-entete .bloc-texte-infos > :nth-child(2) {
+  animation-delay: 0.22s;
+}
+
+.js-actif .banniere-principale-entete .bloc-texte-infos > :nth-child(3) {
+  animation-delay: 0.34s;
+}
+
+.js-actif .banniere-principale-entete .bloc-texte-infos > :nth-child(4) {
+  animation-delay: 0.46s;
+}
+
+.js-actif .banniere-principale-entete .bloc-texte-infos > :nth-child(5) {
+  animation-delay: 0.58s;
+}
+
+.js-actif .bloc-logo-droite {
+  animation: entree-logo 0.9s var(--courbe) 0.4s backwards;
+}
+
+.js-actif .barre-navigation-fixe {
+  animation: descente-menu 0.6s var(--courbe) backwards;
+}
+
+/* Le quadrillage de la bannière glisse très lentement */
+@keyframes glissement-quadrillage {
+  to {
+    background-position: calc(50% + 56px) 56px;
+  }
+}
+
+.banniere-principale-entete {
+  background-position: 50% 0;
+  animation: glissement-quadrillage 28s linear infinite;
+}
+
+/* Le point vert « disponible » bat doucement */
+@keyframes battement-statut {
+  0% {
+    box-shadow: 0 0 0 0 rgba(52, 199, 89, 0.45);
+  }
+
+  70%,
+  100% {
+    box-shadow: 0 0 0 9px rgba(52, 199, 89, 0);
+  }
+}
+
+.point-statut {
+  animation: battement-statut 2.2s ease-out infinite;
+}
+
+/* Logo du campus : léger zoom au survol */
+.bloc-logo-droite img {
+  transition: transform 0.5s var(--courbe), border-color 0.3s ease;
+}
+
+.bloc-logo-droite:hover img {
+  transform: scale(1.025);
+  border-color: var(--accent);
+}
+
+/* --- Menu --- */
+.barre-navigation-fixe {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.barre-navigation-fixe.nav-defilee {
+  background-color: rgba(18, 18, 20, 0.96);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.barre-progression {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  pointer-events: none;
+}
+
+.lien-nav {
+  position: relative;
+  transition: color 0.2s ease, background-color 0.25s ease;
+}
+
+.lien-nav::after {
+  content: '';
+  position: absolute;
+  left: 11px;
+  right: 11px;
+  bottom: 3px;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s var(--courbe);
+}
+
+.lien-nav:hover::after {
+  transform: scaleX(1);
+}
+
+.lien-nav-actif::after {
+  display: none;
+}
+
+/* --- Boutons --- */
+.bouton-primaire,
+.bouton-secondaire,
+.bouton-contour,
+.badge-contact-primaire,
+.badge-contact-secondaire {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+.bouton-primaire:active,
+.bouton-secondaire:active,
+.bouton-contour:active,
+a.badge-contact-primaire:active,
+a.badge-contact-secondaire:active {
+  transform: scale(0.97);
+}
+
+.bouton-secondaire:hover,
+.bouton-contour:hover,
+a.badge-contact-secondaire:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.bouton-primaire i,
+.bouton-secondaire i,
+.bouton-contour i,
+.badge-contact-primaire i,
+.badge-contact-secondaire i {
+  transition: transform 0.25s var(--courbe);
+}
+
+.bouton-primaire:hover .fa-arrow-down,
+.bouton-secondaire:hover .fa-arrow-down {
+  transform: translateY(3px);
+}
+
+.bouton-contour:hover .fa-arrow-up-right-from-square,
+.bouton-secondaire:hover .fa-arrow-up-right-from-square {
+  transform: translate(2px, -2px);
+}
+
+a.badge-contact-primaire:hover i,
+a.badge-contact-secondaire:hover i {
+  transform: rotate(-8deg) scale(1.1);
+}
+
+/* --- Cartes : liseré bleu en haut et bordure qui s'éclaire au survol --- */
+.carte-info-standard,
+.carte-info-centre,
+.carte-projet-lien,
+.carte-document,
+.carte-option-bts,
+.bloc-realisations-cles {
+  transition: border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.3s ease;
+}
+
+.carte-info-standard:hover,
+.carte-info-centre:hover,
+.carte-projet-lien:hover,
+.carte-document:hover,
+.carte-option-bts:hover,
+.bloc-realisations-cles:hover {
+  border-color: var(--accent-discret);
+  box-shadow: inset 0 2px 0 0 var(--accent);
+}
+
+.carte-option-active:hover {
+  border-color: var(--accent);
+}
+
+.icone-carte-grande,
+.icone-document {
+  transition: color 0.25s ease, border-color 0.25s ease, background-color 0.25s ease, transform 0.3s var(--courbe);
+}
+
+.carte-info-standard:hover .icone-carte-grande,
+.carte-document:hover .icone-document {
+  color: var(--accent);
+  border-color: var(--accent-discret);
+  background-color: rgba(110, 168, 254, 0.1);
+  transform: scale(1.06);
+}
+
+.carte-projet-lien h3 {
+  transition: color 0.25s ease;
+}
+
+.carte-projet-lien:hover h3 {
+  color: var(--accent);
+}
+
+#section-realisations .lien-en-savoir-plus::after {
+  transition: transform 0.3s var(--courbe), color 0.25s ease;
+}
+
+#section-realisations .carte-projet-lien:hover .lien-en-savoir-plus::after {
+  transform: translateX(5px);
+}
+
+.etiquette {
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.etiquette:hover {
+  color: var(--texte);
+  border-color: var(--accent-discret);
+}
+
+/* --- Frises et listes : la ligne survolée se met en avant --- */
+.periodes-stage li {
+  position: relative;
+  transition: transform 0.3s var(--courbe);
+}
+
+.periodes-stage li::before {
+  content: '';
+  position: absolute;
+  left: -1px;
+  top: 2px;
+  bottom: 22px;
+  width: 1px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.35s var(--courbe);
+}
+
+.periodes-stage li:last-child::before {
+  bottom: 0;
+}
+
+.periodes-stage li:hover {
+  transform: translateX(4px);
+}
+
+.periodes-stage li:hover::before {
+  transform: scaleY(1);
+}
+
+.contenu-etape-chrono,
+.item-etape-projet h3,
+.item-etape-projet p {
+  transition: transform 0.3s var(--courbe);
+}
+
+.element-frise-chrono:hover .contenu-etape-chrono,
+.item-etape-projet:hover h3,
+.item-etape-projet:hover p {
+  transform: translateX(4px);
+}
+
+.element-frise-chrono .numero-etape-cercle {
+  transition: transform 0.45s var(--courbe) 0.25s, border-color 0.25s ease;
+}
+
+.element-frise-chrono:hover .numero-etape-cercle {
+  border-color: var(--accent);
+}
+
+.liste-infos-perso li {
+  transition: border-color 0.25s ease, padding-left 0.3s var(--courbe);
+}
+
+.liste-infos-perso li:hover {
+  border-bottom-color: var(--accent-discret);
+  padding-left: 6px;
+}
+
+/* Photo et images de projet : bordure qui s'éclaire */
+.image-profil-ronde,
+.bloc-image-projet-droite img,
+.figure-schema img {
+  transition: border-color 0.3s ease;
+}
+
+.image-profil-ronde:hover,
+.bloc-image-projet-droite img:hover,
+.figure-schema img:hover {
+  border-color: var(--accent-discret);
+}
+
+/* Liens simples : soulignement bleu */
+.lien-simple:hover,
+.fil-ariane:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.fil-ariane {
+  transition: color 0.2s ease, transform 0.3s var(--courbe);
+}
+
+.fil-ariane:hover {
+  transform: translateX(-4px);
+}
+
+/* --- Bouton de retour en haut (ajouté par le script) --- */
+.retour-haut {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--carte);
+  border: 1px solid var(--bordure-forte);
+  color: var(--texte);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.3s ease, transform 0.3s var(--courbe), visibility 0.3s, border-color 0.2s ease, color 0.2s ease;
+}
+
+.retour-haut::before {
+  content: '↑';
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: transform 0.25s var(--courbe);
+}
+
+.retour-haut.retour-haut-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.retour-haut:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.retour-haut:hover::before {
+  transform: translateY(-3px);
+}
+
+@media (max-width: 600px) {
+  .retour-haut {
+    right: 16px;
+    bottom: 16px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* --- Réglage « réduire les animations » du système (effets d'animation désactivés
+       dans Windows, par exemple) : on garde les fondus et les changements de couleur,
+       on retire tout ce qui se déplace, grossit ou tourne en boucle. --- */
+@keyframes entree-fondu {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  /* Apparitions : simple fondu, sans glissement */
+  .js-actif .apparition {
+    transform: none;
+    transition: opacity 0.6s ease;
+    will-change: opacity;
+  }
+
+  .js-actif .banniere-principale-entete .bloc-texte-infos > *,
+  .js-actif .bloc-logo-droite {
+    animation-name: entree-fondu;
+  }
+
+  /* Plus d'animation en boucle ni d'entrée du menu */
+  .banniere-principale-entete,
+  .point-statut,
+  .js-actif .barre-navigation-fixe {
+    animation: none;
+  }
+
+  /* Les repères et le trait des frises sont affichés directement */
+  .js-actif .apparition:not(.visible) .marqueur-temporel,
+  .js-actif .apparition:not(.visible) .numero-etape-cercle,
+  .js-actif .apparition:not(.visible) .item-etape-projet::before,
+  .frise-a-tracer::before {
+    transform: none;
+    transition: none;
+  }
+
+  /* Survols : couleurs seulement, aucun déplacement */
+  .bloc-logo-droite:hover img,
+  .bouton-primaire:active,
+  .bouton-secondaire:active,
+  .bouton-contour:active,
+  a.badge-contact-primaire:active,
+  a.badge-contact-secondaire:active,
+  .bouton-primaire:hover i,
+  .bouton-secondaire:hover i,
+  .bouton-contour:hover i,
+  a.badge-contact-primaire:hover i,
+  a.badge-contact-secondaire:hover i,
+  .carte-info-standard:hover .icone-carte-grande,
+  .carte-document:hover .icone-document,
+  .carte-projet-lien:hover .lien-en-savoir-plus::after,
+  #section-realisations .carte-projet-lien:hover .lien-en-savoir-plus::after,
+  .periodes-stage li:hover,
+  .element-frise-chrono:hover .contenu-etape-chrono,
+  .item-etape-projet:hover h3,
+  .item-etape-projet:hover p,
+  .fil-ariane:hover,
+  .retour-haut,
+  .retour-haut:hover::before {
+    transform: none;
+  }
+
+  .liste-infos-perso li:hover {
+    padding-left: 0;
+  }
+}
+
+/* Classes qui remplacent les anciens styles en ligne (exigence de la politique de sécurité CSP) */
+.etiquettes-centrees {
+  justify-content: center;
+}
+
+.marge-haute-40 {
+  margin-top: 40px;
+}

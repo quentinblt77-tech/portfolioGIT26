@@ -18,8 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Si le système demande de réduire les animations, le CSS remplace les
     // glissements par de simples fondus : le script, lui, fait la même chose.
     if (observateurDispo) {
-        const DUREE = 700;      // durée de l'apparition (ms), identique à celle du CSS
-        const DECALAGE = 80;    // écart entre deux éléments voisins d'une même grille (ms)
+        const DUREE = 450;      // durée de l'apparition (ms), identique à celle du CSS
+        const DECALAGE = 50;    // écart entre deux éléments voisins d'une même grille (ms)
 
         const observateur = new IntersectionObserver((entrees) => {
             entrees.forEach((entree) => {
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         blocs.forEach((bloc) => {
             // Les grilles animent leurs éléments un par un, pas le bloc entier
-            if (bloc.matches(GRILLES) || bloc.matches('.grille-deux-colonnes-presentation, .grille-formation, .bloc-certifications')) return;
+            if (bloc.matches(GRILLES) || bloc.matches('.grille-deux-colonnes-presentation, .grille-formation, .bloc-certifications, .ligne-groupes-projets')) return;
 
             // Dans une grille, chaque élément arrive un peu après son voisin
             const parent = bloc.parentElement;

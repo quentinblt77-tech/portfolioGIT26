@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self'; base-uri 'self'; form-action 'none'">
+    <title>Bug Bounty — Quentin THEPOT</title>
+    <meta name="description" content="Projet personnel : recherche de failles de sécurité dans le cadre de programmes de bug bounty, avec un laboratoire isolé sous Docker.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Bug Bounty — Quentin THEPOT">
+    <meta property="og:description" content="Projet personnel : recherche de failles de sécurité dans le cadre de programmes de bug bounty, avec un laboratoire isolé sous Docker.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <script src="../js/script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Barre de Navigation Supérieure ("Menu") -->
+    <nav class="barre-navigation-fixe">
+        <div class="conteneur-navigation">
+            <a href="../index.html" class="marque-nav">Quentin THEPOT<span>BTS SIO · SISR</span></a>
+            <div class="groupe-liens-nav">
+                <a href="../index.html#section-presentation-profil" class="lien-nav">Présentation</a>
+                <a href="../index.html#section-bts-sio-explications" class="lien-nav">BTS SIO</a>
+                <a href="../index.html#section-parcours-scolaire" class="lien-nav">Parcours</a>
+                <a href="../index.html#section-objectifs-professionnels" class="lien-nav">Objectifs</a>
+                <a href="../index.html#section-experiences-professionnelles" class="lien-nav">Expériences</a>
+                <a href="../index.html#section-competences-techniques" class="lien-nav">Compétences</a>
+                <a href="../index.html#section-realisations" class="lien-nav lien-nav-actif">Projets</a>
+                <a href="veille.html" class="lien-nav">Veille</a>
+                <a href="../index.html#section-documents" class="lien-nav">Documents</a>
+                <a href="#pied-de-page-contact" class="lien-nav">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Bannière de la page -->
+    <header class="banniere-principale-entete banniere-page-interne">
+        <div class="conteneur-principal">
+            <div class="grille-banniere-contenu">
+                <div class="bloc-texte-infos">
+                    <a href="../index.html#section-realisations" class="fil-ariane">← Retour aux projets</a>
+                    <h1>Bug Bounty</h1>
+                    <p class="sous-titre-banniere">Projet personnel · Depuis 2026 · Recherche de failles de sécurité</p>
+                    <div class="liste-etiquettes">
+                        <span class="etiquette">YesWeHack</span>
+                        <span class="etiquette">HackerOne</span>
+                        <span class="etiquette">Docker</span>
+                        <span class="etiquette">Firefox</span>
+                        <span class="etiquette">Python</span>
+                        <span class="etiquette">Selenium</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Qu'est-ce que le bug bounty -->
+    <section class="section-generale">
+        <div class="conteneur-principal">
+            <h2 class="titre-de-section alignement-centre">Qu'est-ce que le bug bounty ?</h2>
+            <p class="paragraphe-intro-section alignement-centre">
+                Le bug bounty est une recherche de failles encadrée : une entreprise publie un programme qui autorise des
+                chercheurs en sécurité à tester certains de ses produits. Quand un chercheur trouve une faille, il la
+                signale de façon privée à l'entreprise, qui la corrige avant que des attaquants ne l'exploitent.
+            </p>
+
+            <div class="grille-trois-cartes-centree">
+                <div class="carte-info-standard">
+                    <div class="icone-carte-grande"><i class="fa-solid fa-file-contract"></i></div>
+                    <h3>Un cadre strict</h3>
+                    <p>Chaque programme fixe un périmètre (ce qu'on a le droit de tester) et des règles. Tout ce qui
+                        sort du périmètre est interdit.</p>
+                </div>
+                <div class="carte-info-standard">
+                    <div class="icone-carte-grande"><i class="fa-solid fa-magnifying-glass"></i></div>
+                    <h3>Un rapport vérifiable</h3>
+                    <p>La faille doit être expliquée et reproductible : étapes, preuve de concept et captures, pour que
+                        l'équipe de sécurité puisse la confirmer.</p>
+                </div>
+                <div class="carte-info-standard">
+                    <div class="icone-carte-grande"><i class="fa-solid fa-lock"></i></div>
+                    <h3>La confidentialité</h3>
+                    <p>Tant que la faille n'est pas corrigée, rien n'est rendu public. Si elle est validée, le
+                        chercheur peut être récompensé.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plateformes et méthode -->
+    <section class="section-generale fond-plus-fonce">
+        <div class="conteneur-principal">
+            <h2 class="titre-de-section alignement-centre">Mes plateformes et ma méthode</h2>
+            <p class="paragraphe-intro-section alignement-centre">
+                Les programmes sont publiés sur des plateformes spécialisées, qui font le lien entre les entreprises et
+                les chercheurs.
+            </p>
+
+            <div class="mise-en-page-projet-split">
+                <ul class="liste-etapes-projet">
+                    <li class="item-etape-projet">
+                        <h3>YesWeHack</h3>
+                        <p>Plateforme européenne de bug bounty. C'est là que j'ai envoyé mon premier rapport.</p>
+                    </li>
+                    <li class="item-etape-projet">
+                        <h3>HackerOne</h3>
+                        <p>Plateforme internationale, avec des programmes sur des logiciels libres comme les extensions
+                            WordPress.</p>
+                    </li>
+                    <li class="item-etape-projet">
+                        <h3>Patchstack et Wordfence</h3>
+                        <p>Programmes dédiés à l'écosystème WordPress (inscription Wordfence en attente).</p>
+                    </li>
+                </ul>
+                <ul class="liste-etapes-projet">
+                    <li class="item-etape-projet">
+                        <h3>Respect du périmètre</h3>
+                        <p>Je ne teste que ce que le programme autorise, d'après sa page officielle à jour.</p>
+                    </li>
+                    <li class="item-etape-projet">
+                        <h3>Tests dans un labo isolé</h3>
+                        <p>Les essais tournent sur ma propre machine, sans envoyer de trafic vers les serveurs de
+                            l'entreprise.</p>
+                    </li>
+                    <li class="item-etape-projet">
+                        <h3>Rien que du vérifié</h3>
+                        <p>Je reproduis moi-même chaque faille avant de l'envoyer, et le rapport ne contient que ce que
+                            j'ai pu vérifier.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schéma du labo -->
+    <section class="section-generale">
+        <div class="conteneur-principal">
+            <h2 class="titre-de-section alignement-centre">Mon labo de test</h2>
+            <p class="paragraphe-intro-section alignement-centre">
+                Pour tester une extension de navigateur sans toucher aux serveurs de l'éditeur, j'ai monté un labo
+                isolé et reproductible : un conteneur Docker sans accès au réseau.
+            </p>
+
+            <figure class="schema-labo" aria-label="Schéma du labo de test Docker">
+                <div class="schema-labo-hote">
+                    <span class="schema-labo-etiquette"><i class="fa-solid fa-desktop"></i> Mon PC</span>
+
+                    <div class="schema-labo-vm">
+                        <span class="schema-labo-etiquette"><i class="fa-brands fa-linux"></i> Machine virtuelle Debian</span>
+
+                        <div class="schema-labo-conteneur">
+                            <span class="schema-labo-etiquette"><i class="fa-brands fa-docker"></i> Conteneur Docker · sans réseau (--network none)</span>
+
+                            <div class="schema-labo-flux">
+                                <div class="schema-labo-bloc">
+                                    <i class="fa-brands fa-python"></i>
+                                    <h3>Script de test</h3>
+                                    <p>Python et Selenium pilotent le navigateur</p>
+                                </div>
+                                <span class="schema-labo-fleche" aria-hidden="true">→</span>
+                                <div class="schema-labo-bloc">
+                                    <i class="fa-brands fa-firefox-browser"></i>
+                                    <h3>Firefox</h3>
+                                    <p>Version ESR sans interface, avec l'extension publique installée</p>
+                                </div>
+                                <span class="schema-labo-fleche" aria-hidden="true">→</span>
+                                <div class="schema-labo-bloc">
+                                    <i class="fa-solid fa-file-code"></i>
+                                    <h3>Pages de test</h3>
+                                    <p>Pages web locales qui servent de témoin et de test</p>
+                                </div>
+                                <span class="schema-labo-fleche" aria-hidden="true">→</span>
+                                <div class="schema-labo-bloc schema-labo-bloc-resultat">
+                                    <i class="fa-solid fa-clipboard-check"></i>
+                                    <h3>Résultat</h3>
+                                    <p>Comparaison avec et sans le test, captures à l'appui</p>
+                                </div>
+                            </div>
+
+                            <p class="schema-labo-note"><i class="fa-solid fa-shield-halved"></i> La réponse du serveur de
+                                l'éditeur est simulée dans le labo : aucune connexion vers ses serveurs.</p>
+                        </div>
+                    </div>
+
+                    <p class="schema-labo-note"><i class="fa-solid fa-user-check"></i> Puis reproduction manuelle sous
+                        Windows avec Firefox, pour confirmer le résultat à la main.</p>
+                </div>
+            </figure>
+        </div>
+    </section>
+
+    <!-- Premier rapport -->
+    <section class="section-generale fond-plus-fonce">
+        <div class="conteneur-principal">
+            <h2 class="titre-de-section alignement-centre">Mon premier rapport</h2>
+
+            <div class="bloc-realisations-cles">
+                <span class="badge-choix badge-en-cours">En cours de validation</span>
+                <h3>Une faille dans l'extension d'un VPN connu</h3>
+                <p>J'ai envoyé mon premier rapport le 18 novembre 2026 sur YesWeHack, dans le programme de bug bounty
+                    d'un VPN connu. Il décrit une faille de son extension pour navigateur, qui permet d'éviter sa
+                    protection web. Le rapport est en cours d'examen par l'équipe de sécurité.</p>
+                <p class="marge-haute-16">Les règles du programme interdisent d'en publier les détails tant que le
+                    traitement n'est pas terminé : je n'en dis donc pas plus ici.</p>
+                <div class="liste-etiquettes etiquettes-centrees">
+                    <span class="etiquette">Analyse de code JavaScript</span>
+                    <span class="etiquette">Preuve de concept</span>
+                    <span class="etiquette">Rédaction d'un rapport en anglais</span>
+                    <span class="etiquette">Docker</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pied de page et contact -->
+    <footer id="pied-de-page-contact" class="section-generale style-pied-de-page">
+        <div class="conteneur-principal alignement-centre">
+            <h2 class="titre-de-section">Contact</h2>
+
+            <div class="liens-contact-boutons">
+                <a href="mailto:quentinblt77@gmail.com" class="badge-contact-primaire"><i class="fa-regular fa-envelope"></i> quentinblt77@gmail.com</a>
+                <a href="tel:+33769814335" class="badge-contact-secondaire"><i class="fa-solid fa-phone"></i> 07 69 81 43 35</a>
+            </div>
+
+            <div class="liens-documents-telechargement">
+                <a href="../index.html#section-realisations" class="lien-simple">Tous les projets</a>
+                <a href="../assets/files/CV-Quentin-THEPOT.pdf" target="_blank" rel="noopener" class="lien-simple">Télécharger mon CV</a>
+            </div>
+
+            <p class="texte-copyright">© 2026 Quentin THEPOT</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
